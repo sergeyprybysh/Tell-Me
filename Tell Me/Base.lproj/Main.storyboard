@@ -3,9 +3,25 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Item-->
+        <scene sceneID="Uk2-oK-1M3">
+            <objects>
+                <navigationController id="6yw-rV-ZwJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="kd2-Bz-KzC"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bic-nf-S4A">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="f28-qn-0BN" kind="relationship" relationship="rootViewController" id="EwM-bq-GEL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aec-av-ha0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="907.5" y="75"/>
+        </scene>
         <!--Item 2-->
         <scene sceneID="Wgq-kt-qpj">
             <objects>
@@ -19,10 +35,28 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="acM-eA-2Xf"/>
+                    <navigationItem key="navigationItem" id="dVf-uf-VpO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HkX-VM-L1d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1786.5" y="29"/>
+            <point key="canvasLocation" x="1786.5" y="75"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="dkE-HS-Xkc">
+            <objects>
+                <navigationController id="b8a-lN-7Ge" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="RV0-Kb-R3Y"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tex-LK-Esl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="NKo-Id-FxY" kind="relationship" relationship="rootViewController" id="Nxg-lF-8yd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t9e-NV-gjW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="907.5" y="-649"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="HS2-Iv-mIr">
@@ -68,35 +102,13 @@
                                     <action selector="tapStopButton:" destination="NKo-Id-FxY" eventType="touchUpInside" id="HAn-YK-sdP"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u1k-A3-6pt">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="vWf-UA-bg6"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="App" id="RhO-r3-9og"/>
-                                </items>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="vWf-UA-bg6"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="vWf-UA-bg6"/>
-                                    </mask>
-                                </variation>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ZH8-2J-Qw2" firstAttribute="centerX" secondItem="bhy-cZ-Ztl" secondAttribute="centerX" id="4hc-r7-8gx"/>
                             <constraint firstItem="ZH8-2J-Qw2" firstAttribute="top" secondItem="Eb9-Sk-289" secondAttribute="bottom" constant="98" id="95s-K7-FAw"/>
                             <constraint firstItem="8b9-aF-8FI" firstAttribute="centerX" secondItem="bhy-cZ-Ztl" secondAttribute="centerX" id="9or-Tb-dvW"/>
-                            <constraint firstItem="u1k-A3-6pt" firstAttribute="top" secondItem="1kh-a8-iMz" secondAttribute="bottom" id="HMr-h7-XmW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="u1k-A3-6pt" secondAttribute="trailing" constant="-20" id="KxB-CR-0Bq"/>
                             <constraint firstItem="ZH8-2J-Qw2" firstAttribute="centerY" secondItem="bhy-cZ-Ztl" secondAttribute="centerY" id="RCQ-13-giY"/>
-                            <constraint firstItem="u1k-A3-6pt" firstAttribute="leading" secondItem="bhy-cZ-Ztl" secondAttribute="leadingMargin" constant="-20" id="Sxw-n6-CjQ"/>
                             <constraint firstItem="Eb9-Sk-289" firstAttribute="centerX" secondItem="bhy-cZ-Ztl" secondAttribute="centerX" id="ipy-Hm-fBq"/>
                             <constraint firstItem="wKP-z0-KYV" firstAttribute="top" secondItem="8b9-aF-8FI" secondAttribute="bottom" constant="71" id="sBJ-kg-9BO"/>
                         </constraints>
@@ -105,12 +117,8 @@
                                 <exclude reference="ZH8-2J-Qw2"/>
                                 <exclude reference="Eb9-Sk-289"/>
                                 <exclude reference="8b9-aF-8FI"/>
-                                <exclude reference="u1k-A3-6pt"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="HMr-h7-XmW"/>
-                                <exclude reference="KxB-CR-0Bq"/>
-                                <exclude reference="Sxw-n6-CjQ"/>
                                 <exclude reference="ipy-Hm-fBq"/>
                                 <exclude reference="4hc-r7-8gx"/>
                                 <exclude reference="95s-K7-FAw"/>
@@ -124,12 +132,8 @@
                                 <include reference="ZH8-2J-Qw2"/>
                                 <include reference="Eb9-Sk-289"/>
                                 <include reference="8b9-aF-8FI"/>
-                                <include reference="u1k-A3-6pt"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="HMr-h7-XmW"/>
-                                <include reference="KxB-CR-0Bq"/>
-                                <include reference="Sxw-n6-CjQ"/>
                                 <include reference="ipy-Hm-fBq"/>
                                 <include reference="4hc-r7-8gx"/>
                                 <include reference="95s-K7-FAw"/>
@@ -140,8 +144,8 @@
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="W8O-jY-aco"/>
+                    <navigationItem key="navigationItem" id="uR2-ki-3Xl"/>
                     <connections>
-                        <outlet property="navigationItem" destination="u1k-A3-6pt" id="Q4z-8b-Mq1"/>
                         <outlet property="recordButton" destination="ZH8-2J-Qw2" id="o9C-qE-51r"/>
                         <outlet property="recordingLabel" destination="Eb9-Sk-289" id="RnK-SU-tcn"/>
                         <outlet property="stopButton" destination="8b9-aF-8FI" id="rCp-Ue-1vm"/>
@@ -149,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0jv-oH-Gd0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1798.5" y="-712"/>
+            <point key="canvasLocation" x="1798.5" y="-649"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="mu4-0d-7Pl">
@@ -166,7 +170,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJr-mA-AxL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2644.5" y="-361"/>
+            <point key="canvasLocation" x="2767.5" y="-649"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="L6O-LA-X8t">
@@ -178,8 +182,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="NKo-Id-FxY" kind="relationship" relationship="viewControllers" id="Wj0-J1-FOI"/>
-                        <segue destination="f28-qn-0BN" kind="relationship" relationship="viewControllers" id="dCK-3o-jsS"/>
+                        <segue destination="b8a-lN-7Ge" kind="relationship" relationship="viewControllers" id="R6J-1p-IEq"/>
+                        <segue destination="6yw-rV-ZwJ" kind="relationship" relationship="viewControllers" id="TpM-Rk-N1x"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HZC-pP-XwD" userLabel="First Responder" sceneMemberID="firstResponder"/>

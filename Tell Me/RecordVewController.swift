@@ -14,13 +14,11 @@ class RecordVewController: UIViewController {
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     
-    @IBOutlet weak var navigationBar: UINavigationBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         recordingLabel.hidden = true
         stopButton.hidden = true
-        navigationBar.
         
     }
 
