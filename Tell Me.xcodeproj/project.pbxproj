@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		A523BA2B1D04074F00A4D69B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BA2A1D04074F00A4D69B /* AppDelegate.swift */; };
-		A523BA2D1D04074F00A4D69B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BA2C1D04074F00A4D69B /* ViewController.swift */; };
+		A523BA2D1D04074F00A4D69B /* RecordVewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BA2C1D04074F00A4D69B /* RecordVewController.swift */; };
 		A523BA301D04074F00A4D69B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A523BA2E1D04074F00A4D69B /* Main.storyboard */; };
 		A523BA331D04074F00A4D69B /* Tell_Me.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A523BA311D04074F00A4D69B /* Tell_Me.xcdatamodeld */; };
 		A523BA351D04074F00A4D69B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A523BA341D04074F00A4D69B /* Assets.xcassets */; };
 		A523BA381D04074F00A4D69B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A523BA361D04074F00A4D69B /* LaunchScreen.storyboard */; };
 		A523BA431D04074F00A4D69B /* Tell_MeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BA421D04074F00A4D69B /* Tell_MeTests.swift */; };
 		A523BA4E1D04074F00A4D69B /* Tell_MeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BA4D1D04074F00A4D69B /* Tell_MeUITests.swift */; };
+		A523BA5C1D04D47F00A4D69B /* AnalyzedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BA5B1D04D47E00A4D69B /* AnalyzedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,7 @@
 /* Begin PBXFileReference section */
 		A523BA271D04074F00A4D69B /* Tell Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tell Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A523BA2A1D04074F00A4D69B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A523BA2C1D04074F00A4D69B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A523BA2C1D04074F00A4D69B /* RecordVewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVewController.swift; sourceTree = "<group>"; };
 		A523BA2F1D04074F00A4D69B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A523BA321D04074F00A4D69B /* Tell_Me.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tell_Me.xcdatamodel; sourceTree = "<group>"; };
 		A523BA341D04074F00A4D69B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +50,7 @@
 		A523BA491D04074F00A4D69B /* Tell MeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tell MeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A523BA4D1D04074F00A4D69B /* Tell_MeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tell_MeUITests.swift; sourceTree = "<group>"; };
 		A523BA4F1D04074F00A4D69B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A523BA5B1D04D47E00A4D69B /* AnalyzedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyzedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +102,13 @@
 			isa = PBXGroup;
 			children = (
 				A523BA2A1D04074F00A4D69B /* AppDelegate.swift */,
-				A523BA2C1D04074F00A4D69B /* ViewController.swift */,
+				A523BA2C1D04074F00A4D69B /* RecordVewController.swift */,
 				A523BA2E1D04074F00A4D69B /* Main.storyboard */,
 				A523BA341D04074F00A4D69B /* Assets.xcassets */,
 				A523BA361D04074F00A4D69B /* LaunchScreen.storyboard */,
 				A523BA391D04074F00A4D69B /* Info.plist */,
 				A523BA311D04074F00A4D69B /* Tell_Me.xcdatamodeld */,
+				A523BA5B1D04D47E00A4D69B /* AnalyzedViewController.swift */,
 			);
 			path = "Tell Me";
 			sourceTree = "<group>";
@@ -260,7 +263,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A523BA331D04074F00A4D69B /* Tell_Me.xcdatamodeld in Sources */,
-				A523BA2D1D04074F00A4D69B /* ViewController.swift in Sources */,
+				A523BA2D1D04074F00A4D69B /* RecordVewController.swift in Sources */,
+				A523BA5C1D04D47F00A4D69B /* AnalyzedViewController.swift in Sources */,
 				A523BA2B1D04074F00A4D69B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
