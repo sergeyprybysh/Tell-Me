@@ -76,6 +76,20 @@
                                     <action selector="tapRecordButton:" destination="NKo-Id-FxY" eventType="touchUpInside" id="bXH-w3-ss0"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8b9-aF-8FI">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="stop"/>
+                                <connections>
+                                    <action selector="tapStopButton:" destination="NKo-Id-FxY" eventType="touchUpInside" id="HAn-YK-sdP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3VG-va-0cF">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Analyze"/>
+                                <connections>
+                                    <action selector="tapAnalyzedButton:" destination="NKo-Id-FxY" eventType="touchUpInside" id="pad-5i-mbt"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recording in Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eb9-Sk-289">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
@@ -95,34 +109,32 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8b9-aF-8FI">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" image="stop"/>
-                                <connections>
-                                    <action selector="tapStopButton:" destination="NKo-Id-FxY" eventType="touchUpInside" id="HAn-YK-sdP"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ZH8-2J-Qw2" firstAttribute="centerX" secondItem="bhy-cZ-Ztl" secondAttribute="centerX" id="4hc-r7-8gx"/>
-                            <constraint firstItem="ZH8-2J-Qw2" firstAttribute="top" secondItem="Eb9-Sk-289" secondAttribute="bottom" constant="98" id="95s-K7-FAw"/>
                             <constraint firstItem="8b9-aF-8FI" firstAttribute="centerX" secondItem="bhy-cZ-Ztl" secondAttribute="centerX" id="9or-Tb-dvW"/>
-                            <constraint firstItem="ZH8-2J-Qw2" firstAttribute="centerY" secondItem="bhy-cZ-Ztl" secondAttribute="centerY" id="RCQ-13-giY"/>
-                            <constraint firstItem="Eb9-Sk-289" firstAttribute="centerX" secondItem="bhy-cZ-Ztl" secondAttribute="centerX" id="ipy-Hm-fBq"/>
+                            <constraint firstItem="3VG-va-0cF" firstAttribute="centerX" secondItem="bhy-cZ-Ztl" secondAttribute="centerX" id="Vbu-2j-Bio"/>
+                            <constraint firstItem="ZH8-2J-Qw2" firstAttribute="top" secondItem="1kh-a8-iMz" secondAttribute="bottom" constant="60" id="g3P-Pd-VA7"/>
+                            <constraint firstItem="ZH8-2J-Qw2" firstAttribute="centerX" secondItem="bhy-cZ-Ztl" secondAttribute="centerX" id="mU5-BE-FNa"/>
                             <constraint firstItem="wKP-z0-KYV" firstAttribute="top" secondItem="8b9-aF-8FI" secondAttribute="bottom" constant="71" id="sBJ-kg-9BO"/>
+                            <constraint firstItem="Eb9-Sk-289" firstAttribute="top" secondItem="ZH8-2J-Qw2" secondAttribute="bottom" constant="76" id="t8s-qP-MQA"/>
+                            <constraint firstItem="Eb9-Sk-289" firstAttribute="centerX" secondItem="bhy-cZ-Ztl" secondAttribute="centerX" id="uPH-qY-z5d"/>
+                            <constraint firstItem="3VG-va-0cF" firstAttribute="top" secondItem="Eb9-Sk-289" secondAttribute="bottom" constant="24" id="vkm-pu-I34"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="ZH8-2J-Qw2"/>
-                                <exclude reference="Eb9-Sk-289"/>
                                 <exclude reference="8b9-aF-8FI"/>
+                                <exclude reference="3VG-va-0cF"/>
+                                <exclude reference="Eb9-Sk-289"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="ipy-Hm-fBq"/>
-                                <exclude reference="4hc-r7-8gx"/>
-                                <exclude reference="95s-K7-FAw"/>
-                                <exclude reference="RCQ-13-giY"/>
+                                <exclude reference="g3P-Pd-VA7"/>
+                                <exclude reference="mU5-BE-FNa"/>
+                                <exclude reference="t8s-qP-MQA"/>
+                                <exclude reference="uPH-qY-z5d"/>
+                                <exclude reference="Vbu-2j-Bio"/>
+                                <exclude reference="vkm-pu-I34"/>
                                 <exclude reference="9or-Tb-dvW"/>
                                 <exclude reference="sBJ-kg-9BO"/>
                             </mask>
@@ -130,14 +142,17 @@
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="ZH8-2J-Qw2"/>
-                                <include reference="Eb9-Sk-289"/>
                                 <include reference="8b9-aF-8FI"/>
+                                <include reference="3VG-va-0cF"/>
+                                <include reference="Eb9-Sk-289"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="ipy-Hm-fBq"/>
-                                <include reference="4hc-r7-8gx"/>
-                                <include reference="95s-K7-FAw"/>
-                                <include reference="RCQ-13-giY"/>
+                                <include reference="g3P-Pd-VA7"/>
+                                <include reference="mU5-BE-FNa"/>
+                                <include reference="t8s-qP-MQA"/>
+                                <include reference="uPH-qY-z5d"/>
+                                <include reference="Vbu-2j-Bio"/>
+                                <include reference="vkm-pu-I34"/>
                                 <include reference="9or-Tb-dvW"/>
                                 <include reference="sBJ-kg-9BO"/>
                             </mask>
@@ -146,19 +161,21 @@
                     <tabBarItem key="tabBarItem" title="Item 1" id="W8O-jY-aco"/>
                     <navigationItem key="navigationItem" id="uR2-ki-3Xl"/>
                     <connections>
+                        <outlet property="analyzeButton" destination="3VG-va-0cF" id="QIs-L4-Jfi"/>
                         <outlet property="recordButton" destination="ZH8-2J-Qw2" id="o9C-qE-51r"/>
                         <outlet property="recordingLabel" destination="Eb9-Sk-289" id="RnK-SU-tcn"/>
                         <outlet property="stopButton" destination="8b9-aF-8FI" id="rCp-Ue-1vm"/>
+                        <segue destination="hZb-wr-nHy" kind="show" identifier="toAnalyzedVCSegue" id="ZHP-j8-TdO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0jv-oH-Gd0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1798.5" y="-649"/>
         </scene>
-        <!--View Controller-->
+        <!--Analyzed View Controller-->
         <scene sceneID="mu4-0d-7Pl">
             <objects>
-                <viewController id="hZb-wr-nHy" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="analyzedVC" id="hZb-wr-nHy" customClass="AnalyzedViewController" customModule="Tell_Me" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="brh-b5-aBc"/>
                         <viewControllerLayoutGuide type="bottom" id="oce-zM-PfV"/>
