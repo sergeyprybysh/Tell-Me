@@ -26,6 +26,12 @@ class RecordVewController: UIViewController, AVAudioRecorderDelegate {
         analyzeButton.hidden = true
         navigationItem.title = AppConstants.appName
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        recordingLabel.hidden = true
+        analyzeButton.hidden = true
+    }
 
 
     @IBAction func tapRecordButton(sender: AnyObject) {
@@ -45,7 +51,7 @@ class RecordVewController: UIViewController, AVAudioRecorderDelegate {
     func recordAudio() {
         
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)[0] as String
-        let recordingName = "recordedVoice.wav"
+        let recordingName = "recordedAudio.wav"
         let pathArray = [dirPath, recordingName]
         let filePath = NSURL.fileURLWithPathComponents(pathArray)
         print(filePath)
@@ -77,13 +83,16 @@ class RecordVewController: UIViewController, AVAudioRecorderDelegate {
     
     @IBAction func tapAnalyzedButton(sender: AnyObject) {
         print("Press analyze button")
-        performSegueWithIdentifier("toAnalyzedVCSegue", sender: nil)
+        performSegueWithIdentifier("toAnalyzedVCSegue", sender: audioRecorder.url)
     }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {        
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         if segue.identifier == "toAnalyzedVCSegue" {
-            _ = segue.destinationViewController as! AnalyzedViewController
+            let analyzedVC = segue.destinationViewController as! AnalyzedViewController
+            let recordedAudioURL = sender as! NSURL
+            analyzedVC.recordedAudioURL = recordedAudioURL
             let backItem = UIBarButtonItem()
             backItem.title = AppConstants.navigationBackButton
             navigationItem.backBarButtonItem = backItem
@@ -101,8 +110,20 @@ class RecordVewController: UIViewController, AVAudioRecorderDelegate {
             analyzeButton.hidden = false
         }
         else {
-            print("There was an error while saving recorded aoudio")
+            let message = "There was an error while saving recorded aoudio"
+            print(message)
+            presentAlertWithErrorMessage(message)
         }
+    }
+    
+}
+
+extension UIViewController {
+    
+    func presentAlertWithErrorMessage(error: String) {
+        let alert = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
 }

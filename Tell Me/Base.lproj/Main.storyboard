@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Item-->
@@ -31,6 +33,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hH3-hf-82r"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CIJ-zz-CfX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -67,6 +70,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wKP-z0-KYV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bhy-cZ-Ztl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZH8-2J-Qw2">
@@ -129,14 +133,14 @@
                                 <exclude reference="Eb9-Sk-289"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="sBJ-kg-9BO"/>
+                                <exclude reference="Vbu-2j-Bio"/>
+                                <exclude reference="vkm-pu-I34"/>
+                                <exclude reference="9or-Tb-dvW"/>
                                 <exclude reference="g3P-Pd-VA7"/>
                                 <exclude reference="mU5-BE-FNa"/>
                                 <exclude reference="t8s-qP-MQA"/>
                                 <exclude reference="uPH-qY-z5d"/>
-                                <exclude reference="Vbu-2j-Bio"/>
-                                <exclude reference="vkm-pu-I34"/>
-                                <exclude reference="9or-Tb-dvW"/>
-                                <exclude reference="sBJ-kg-9BO"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -147,14 +151,14 @@
                                 <include reference="Eb9-Sk-289"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="sBJ-kg-9BO"/>
+                                <include reference="Vbu-2j-Bio"/>
+                                <include reference="vkm-pu-I34"/>
+                                <include reference="9or-Tb-dvW"/>
                                 <include reference="g3P-Pd-VA7"/>
                                 <include reference="mU5-BE-FNa"/>
                                 <include reference="t8s-qP-MQA"/>
                                 <include reference="uPH-qY-z5d"/>
-                                <include reference="Vbu-2j-Bio"/>
-                                <include reference="vkm-pu-I34"/>
-                                <include reference="9or-Tb-dvW"/>
-                                <include reference="sBJ-kg-9BO"/>
                             </mask>
                         </variation>
                     </view>
@@ -181,8 +185,51 @@
                         <viewControllerLayoutGuide type="bottom" id="oce-zM-PfV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ftz-u3-uGI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WS4-Vb-z8j">
+                                <rect key="frame" x="0.0" y="0.0" width="110" height="200"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DzA-1h-NhK">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="Play"/>
+                                        <connections>
+                                            <action selector="tapPlayButton:" destination="hZb-wr-nHy" eventType="touchUpInside" id="k6E-YH-3hd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WS4-Vb-z8j" firstAttribute="top" secondItem="brh-b5-aBc" secondAttribute="bottom" id="0LZ-9g-9uG"/>
+                            <constraint firstItem="oce-zM-PfV" firstAttribute="top" secondItem="WS4-Vb-z8j" secondAttribute="bottom" id="FyO-88-vzm"/>
+                            <constraint firstItem="WS4-Vb-z8j" firstAttribute="leading" secondItem="ftz-u3-uGI" secondAttribute="leadingMargin" constant="-20" id="hYA-mc-CBf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WS4-Vb-z8j" secondAttribute="trailing" constant="-20" id="w12-ae-Zek"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="WS4-Vb-z8j"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="FyO-88-vzm"/>
+                                <exclude reference="0LZ-9g-9uG"/>
+                                <exclude reference="hYA-mc-CBf"/>
+                                <exclude reference="w12-ae-Zek"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="WS4-Vb-z8j"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="FyO-88-vzm"/>
+                                <include reference="0LZ-9g-9uG"/>
+                                <include reference="hYA-mc-CBf"/>
+                                <include reference="w12-ae-Zek"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJr-mA-AxL" userLabel="First Responder" sceneMemberID="firstResponder"/>

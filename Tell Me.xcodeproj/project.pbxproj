@@ -17,6 +17,9 @@
 		A523BA4E1D04074F00A4D69B /* Tell_MeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BA4D1D04074F00A4D69B /* Tell_MeUITests.swift */; };
 		A523BA5C1D04D47F00A4D69B /* AnalyzedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BA5B1D04D47E00A4D69B /* AnalyzedViewController.swift */; };
 		A523BA9A1D04DC4200A4D69B /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BA991D04DC4200A4D69B /* AppConstants.swift */; };
+		A523BA9D1D0944B300A4D69B /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BA9C1D0944B300A4D69B /* Client.swift */; };
+		A523BA9F1D0CD74B00A4D69B /* ConvenienceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BA9E1D0CD74B00A4D69B /* ConvenienceClient.swift */; };
+		A523BAA11D0CD82900A4D69B /* ConstantsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BAA01D0CD82900A4D69B /* ConstantsClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		A523BA4F1D04074F00A4D69B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A523BA5B1D04D47E00A4D69B /* AnalyzedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyzedViewController.swift; sourceTree = "<group>"; };
 		A523BA991D04DC4200A4D69B /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		A523BA9C1D0944B300A4D69B /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		A523BA9E1D0CD74B00A4D69B /* ConvenienceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvenienceClient.swift; sourceTree = "<group>"; };
+		A523BAA01D0CD82900A4D69B /* ConstantsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,15 +109,14 @@
 		A523BA291D04074F00A4D69B /* Tell Me */ = {
 			isa = PBXGroup;
 			children = (
+				A523BA9B1D09448F00A4D69B /* Client */,
 				A523BA2A1D04074F00A4D69B /* AppDelegate.swift */,
 				A523BA2C1D04074F00A4D69B /* RecordVewController.swift */,
 				A523BA2E1D04074F00A4D69B /* Main.storyboard */,
-				A523BA341D04074F00A4D69B /* Assets.xcassets */,
-				A523BA361D04074F00A4D69B /* LaunchScreen.storyboard */,
-				A523BA391D04074F00A4D69B /* Info.plist */,
 				A523BA311D04074F00A4D69B /* Tell_Me.xcdatamodeld */,
 				A523BA5B1D04D47E00A4D69B /* AnalyzedViewController.swift */,
 				A523BA991D04DC4200A4D69B /* AppConstants.swift */,
+				A55231431D1D069B005ED8F4 /* Supporting Files */,
 			);
 			path = "Tell Me";
 			sourceTree = "<group>";
@@ -132,6 +137,26 @@
 				A523BA4F1D04074F00A4D69B /* Info.plist */,
 			);
 			path = "Tell MeUITests";
+			sourceTree = "<group>";
+		};
+		A523BA9B1D09448F00A4D69B /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				A523BA9C1D0944B300A4D69B /* Client.swift */,
+				A523BA9E1D0CD74B00A4D69B /* ConvenienceClient.swift */,
+				A523BAA01D0CD82900A4D69B /* ConstantsClient.swift */,
+			);
+			name = Client;
+			sourceTree = "<group>";
+		};
+		A55231431D1D069B005ED8F4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A523BA341D04074F00A4D69B /* Assets.xcassets */,
+				A523BA361D04074F00A4D69B /* LaunchScreen.storyboard */,
+				A523BA391D04074F00A4D69B /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,9 +292,12 @@
 			files = (
 				A523BA331D04074F00A4D69B /* Tell_Me.xcdatamodeld in Sources */,
 				A523BA2D1D04074F00A4D69B /* RecordVewController.swift in Sources */,
+				A523BA9D1D0944B300A4D69B /* Client.swift in Sources */,
 				A523BA5C1D04D47F00A4D69B /* AnalyzedViewController.swift in Sources */,
+				A523BAA11D0CD82900A4D69B /* ConstantsClient.swift in Sources */,
 				A523BA2B1D04074F00A4D69B /* AppDelegate.swift in Sources */,
 				A523BA9A1D04DC4200A4D69B /* AppConstants.swift in Sources */,
+				A523BA9F1D0CD74B00A4D69B /* ConvenienceClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +522,7 @@
 				A523BA541D04074F00A4D69B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A523BA551D04074F00A4D69B /* Build configuration list for PBXNativeTarget "Tell MeTests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +531,7 @@
 				A523BA571D04074F00A4D69B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A523BA581D04074F00A4D69B /* Build configuration list for PBXNativeTarget "Tell MeUITests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +540,7 @@
 				A523BA5A1D04074F00A4D69B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
