@@ -14,6 +14,11 @@ class AnalyzedViewController: UIViewController {
     
     var recordedAudioURL: NSURL!
     
+    @IBOutlet weak var transcriptTextView: UITextView!
+    //Temp varibles to store data
+    var mTranscript: String?
+    var mConfidence: Double?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +34,19 @@ class AnalyzedViewController: UIViewController {
                 self.presentAlertWithErrorMessage(error!.localizedDescription)})
                 return
             }
+            dispatch_async(dispatch_get_main_queue(), {
+            //Will update data model here
+            let transcript = data![Client.IBMResponseKeys.transcript] as! String
+            let confidence = data![Client.IBMResponseKeys.confidence] as! Double
+            self.mTranscript = transcript
+            self.mConfidence = confidence
+            self.refreshTextView()
+            })
         }
     }
     
-    @IBAction func tapPlayButton(sender: AnyObject) {
-        print("Tap play button")
+    func refreshTextView() {
+        transcriptTextView.text = mTranscript!
     }
+    
 }

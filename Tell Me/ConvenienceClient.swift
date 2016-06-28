@@ -10,7 +10,7 @@ import Foundation
 
 extension Client {
     
-    func getAudioTranscript(audioPath: NSURL, completionHandler handler: (data: [String : String]?, error: NSError?) -> Void)  {
+    func getAudioTranscript(audioPath: NSURL, completionHandler handler: (data: [String : AnyObject]?, error: NSError?) -> Void)  {
     
         let components = NSURLComponents()
         
@@ -28,6 +28,7 @@ extension Client {
         taskForPOSTMethod(components.URL!,authString: authString, headers: headers, data: data!) { (data, error) -> Void in
             guard error == nil else {
                 print("Error is not nil " + error!.localizedDescription)
+                handler(data: nil, error: error)
                 return
             }
             let parsedResult: AnyObject!
@@ -38,30 +39,22 @@ extension Client {
                 handler(data: nil, error: NSError(domain: "Serialization", code: 003, userInfo: [NSLocalizedDescriptionKey: "Unable deserialize data"]))
                 return
             }
-            
-            guard let results = parsedResult[IBMResponseKeys.results] as? [String: AnyObject] else {
-                handler(data: nil, error: NSError(domain: "Parsing", code: 003, userInfo: [NSLocalizedDescriptionKey: "Unable to parse JSON with key" + IBMResponseKeys.results]))
+            print(parsedResult)
+            guard let results = parsedResult[IBMResponseKeys.results] as? [[String: AnyObject]] else {
+                handler(data: nil, error: NSError(domain: "Parsing", code: 003, userInfo: [NSLocalizedDescriptionKey: "Unable to parse JSON with key " + IBMResponseKeys.results]))
                 return
             }
             
-            guard let alternatives = results[IBMResponseKeys.alternatives] as? [String: AnyObject] else {
+            guard let alternatives = results[0][IBMResponseKeys.alternatives] as? [[String: AnyObject]] else {
                 handler(data: nil, error: NSError(domain: "Parsing", code: 003, userInfo: [NSLocalizedDescriptionKey: "Unable to parse JSON with key" + IBMResponseKeys.alternatives]))
                 return
             }
             
-            let confidence = alternatives[0]
-
-            
-              //if let urlData = data {
-                
-//                let watsonResponse = NSString(data: urlData, encoding: NSUTF8StringEncoding)
-//                print(watsonResponse)
-//            } else {
-//                print("Zomg")
-//            }
+            let recievedData = alternatives[0]
+            handler(data: recievedData, error: nil)            
         }
-       
     }
+    
     
     func getBasicAuthCredentials() -> String {
         let username = IBMServiceConstants.username
