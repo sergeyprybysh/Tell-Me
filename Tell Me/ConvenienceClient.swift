@@ -14,16 +14,16 @@ extension Client {
     
         let components = NSURLComponents()
         
-        components.scheme = IBMServiceConstants.scheme
-        components.host = IBMServiceConstants.host
-        components.path = IBMServiceConstants.path
+        components.scheme = IBMSpeechToText.scheme
+        components.host = IBMSpeechToText.host
+        components.path = IBMSpeechToText.path
         
         var headers = [String: String]()
-        headers["Content-Type"] = "audio/wav"
+        headers[Headers.content_type] = "audio/wav"
         
         let data = NSData(contentsOfURL: audioPath)
         
-        let authString = getBasicAuthCredentials()
+        let authString = getBasicAuthCredentialsFor(.SpeechToText)
         
         taskForPOSTMethod(components.URL!,authString: authString, headers: headers, data: data!) { (data, error) -> Void in
             guard error == nil else {
@@ -39,30 +39,94 @@ extension Client {
                 handler(data: nil, error: NSError(domain: "Serialization", code: 003, userInfo: [NSLocalizedDescriptionKey: "Unable deserialize data"]))
                 return
             }
+            
+            //TODO: remove it.
             print(parsedResult)
             guard let results = parsedResult[IBMResponseKeys.results] as? [[String: AnyObject]] else {
                 handler(data: nil, error: NSError(domain: "Parsing", code: 003, userInfo: [NSLocalizedDescriptionKey: "Unable to parse JSON with key " + IBMResponseKeys.results]))
                 return
             }
-            
+            //TODO: fix no resuls.
             guard let alternatives = results[0][IBMResponseKeys.alternatives] as? [[String: AnyObject]] else {
                 handler(data: nil, error: NSError(domain: "Parsing", code: 003, userInfo: [NSLocalizedDescriptionKey: "Unable to parse JSON with key" + IBMResponseKeys.alternatives]))
                 return
             }
             
             let recievedData = alternatives[0]
-            handler(data: recievedData, error: nil)            
+            handler(data: recievedData, error: nil)
+            
         }
     }
     
     
-    func getBasicAuthCredentials() -> String {
-        let username = IBMServiceConstants.username
-        let password = IBMServiceConstants.password
+    func analyzeText(text: String, completionHandler handler: (data: [String : AnyObject]?, error: NSError?) -> Void) {
+            
+        let comp = NSURLComponents()
+            
+        comp.scheme = IBMToneAnalizer.scheme
+        comp.host = IBMToneAnalizer.toneAnalyzerHost
+        comp.path = IBMToneAnalizer.toneAnalyzerPath
+        //comp.percentEncodedQuery = IBMServiceConstants.toneAnalyzerQuery
+            
+        var headers = [String: String]()
+        headers[Headers.content_type] = "text/plain"
+            
+        let data = text.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        let authString = getBasicAuthCredentialsFor(.ToneAnalyzer)
+        print(comp)
+        
+        taskForPOSTMethod(comp.URL!, authString: authString, headers: headers, data: data!) { (data, error) -> Void in
+            
+            guard error == nil else {
+                print("Error is not nil " + error!.localizedDescription)
+                handler(data: nil, error: error)
+                return
+            }
+            
+            let parsedResult: AnyObject!
+            do {
+                parsedResult = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
+            }
+            catch {
+                handler(data: nil, error: NSError(domain: "Serialization", code: 003, userInfo: [NSLocalizedDescriptionKey: "Unable deserialize data"]))
+                return
+            }
+            
+            //TODO: remove it.
+            print(parsedResult)
+        }
+
+    }
+    
+    
+    
+    private func getBasicAuthCredentialsFor(service: Service) -> String {
+        
+        var username: String!
+        var password: String!
+        
+        switch service {
+            
+        case .SpeechToText:
+            username = IBMSpeechToText.username
+            password = IBMSpeechToText.password
+            break
+            
+        case .ToneAnalyzer:
+            username = IBMToneAnalizer.username
+            password = IBMToneAnalizer.password
+            break
+        }
+        
         let userPasswordString = NSString(format: "%@:%@", username, password)
         let userPasswordData = userPasswordString.dataUsingEncoding(NSUTF8StringEncoding)
         let base64EncodedCredential = userPasswordData!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.init(rawValue: 0))
         return "Basic \(base64EncodedCredential)"
+    }
+    
+    enum Service {
+        case ToneAnalyzer, SpeechToText
     }
     
 }

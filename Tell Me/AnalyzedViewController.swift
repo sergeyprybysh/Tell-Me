@@ -27,7 +27,7 @@ class AnalyzedViewController: UIViewController {
     }
     
     
-    func getTranscriptForAudio() {
+    private func getTranscriptForAudio() {
         Client.sharedInstance().getAudioTranscript(recordedAudioURL) { (data, error) -> Void in
             guard error == nil else {
                 dispatch_async(dispatch_get_main_queue(), {
@@ -43,6 +43,19 @@ class AnalyzedViewController: UIViewController {
             self.refreshTextView()
             })
         }
+    }
+    
+    @IBAction func pressAnalyzeButton(sender: UIButton) {
+        analyzeTextWithIBM()
+    }
+    
+    private func analyzeTextWithIBM() {
+        if let text = mTranscript {
+            Client.sharedInstance().analyzeText(text, completionHandler: { (data, error) -> Void in
+                print("OKKKKKKKK")
+            })
+        }
+        
     }
     
     func refreshTextView() {
