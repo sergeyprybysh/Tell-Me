@@ -51,8 +51,16 @@ class AnalyzedViewController: UIViewController {
     
     private func analyzeTextWithIBM() {
         if let text = mTranscript {
-            Client.sharedInstance().analyzeText(text, completionHandler: { (data, error) -> Void in
-                print("OKKKKKKKK")
+            Client.sharedInstance().analyzeText(text, completionHandler: { (emotionTone, languageTone, socialTone, error) -> Void in
+                if let emotionT = emotionTone {
+                    print(emotionT)
+                }
+                if let languageT = languageTone {
+                    print(languageT)
+                }
+                if let socialT = socialTone {
+                    print(socialT)
+                }
             })
         }
         
