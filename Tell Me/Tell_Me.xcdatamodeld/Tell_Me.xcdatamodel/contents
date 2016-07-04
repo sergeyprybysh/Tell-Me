@@ -1,4 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F27" minimumToolsVersion="Automatic">
+    <entity name="EmotionsTone" representedClassName=".EmotionsTone" parentEntity="TextObject" syncable="YES">
+        <attribute name="anger" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="disgust" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="fear" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="joy" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="sadness" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="textObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TextObject" inverseName="emotionsTone" inverseEntity="TextObject" syncable="YES"/>
+    </entity>
+    <entity name="LanguageTone" representedClassName=".LanguageTone" parentEntity="TextObject" syncable="YES">
+        <attribute name="analytical" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="confident" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="tentative" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="textObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TextObject" inverseName="languageTone" inverseEntity="TextObject" syncable="YES"/>
+    </entity>
+    <entity name="SocialTone" representedClassName=".SocialTone" parentEntity="TextObject" syncable="YES">
+        <attribute name="agreeableness" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="conscientiousness" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="emotionalRange" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="extraversion" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="openness" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="textObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TextObject" inverseName="socialTone" inverseEntity="TextObject" syncable="YES"/>
+    </entity>
+    <entity name="TextObject" representedClassName=".TextObject" syncable="YES">
+        <attribute name="confidence" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="emotionsTone" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmotionsTone" inverseName="textObject" inverseEntity="EmotionsTone" syncable="YES"/>
+        <relationship name="languageTone" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LanguageTone" inverseName="textObject" inverseEntity="LanguageTone" syncable="YES"/>
+        <relationship name="socialTone" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SocialTone" inverseName="textObject" inverseEntity="SocialTone" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TextObject" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="EmotionsTone" positionX="-54" positionY="9" width="128" height="135"/>
+        <element name="LanguageTone" positionX="-36" positionY="54" width="128" height="105"/>
+        <element name="SocialTone" positionX="-18" positionY="72" width="128" height="135"/>
+    </elements>
 </model>

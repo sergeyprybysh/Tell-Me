@@ -17,6 +17,8 @@ class SocialTone: NSManagedObject {
     @NSManaged var agreeableness: Double
     @NSManaged var emotionalRange: Double
     
+    @NSManaged var textObject: TextObject?
+    
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)

@@ -14,6 +14,10 @@ class TextObject: NSManagedObject {
     @NSManaged var text: String
     @NSManaged var confidence: Double
     
+    @NSManaged var emotionsTone: EmotionsTone?
+    @NSManaged var languageTone: LanguageTone?
+    @NSManaged var socialTone: SocialTone?
+    
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)

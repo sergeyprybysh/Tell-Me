@@ -17,6 +17,8 @@ class EmotionsTone: NSManagedObject {
     @NSManaged var joy: Double
     @NSManaged var sadness: Double
     
+    @NSManaged var textObject: TextObject?
+    
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)

@@ -15,6 +15,8 @@ class LanguageTone: NSManagedObject {
     @NSManaged var confident: Double
     @NSManaged var tentative: Double
     
+    @NSManaged var textObject: TextObject?
+    
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
