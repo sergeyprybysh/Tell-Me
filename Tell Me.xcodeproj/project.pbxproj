@@ -20,6 +20,7 @@
 		A523BA9D1D0944B300A4D69B /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BA9C1D0944B300A4D69B /* Client.swift */; };
 		A523BA9F1D0CD74B00A4D69B /* ConvenienceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BA9E1D0CD74B00A4D69B /* ConvenienceClient.swift */; };
 		A523BAA11D0CD82900A4D69B /* ConstantsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BAA01D0CD82900A4D69B /* ConstantsClient.swift */; };
+		A55231461D2A0D17005ED8F4 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55231451D2A0D17005ED8F4 /* CoreDataStackManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		A523BA9C1D0944B300A4D69B /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		A523BA9E1D0CD74B00A4D69B /* ConvenienceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvenienceClient.swift; sourceTree = "<group>"; };
 		A523BAA01D0CD82900A4D69B /* ConstantsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsClient.swift; sourceTree = "<group>"; };
+		A55231451D2A0D17005ED8F4 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,11 +111,10 @@
 		A523BA291D04074F00A4D69B /* Tell Me */ = {
 			isa = PBXGroup;
 			children = (
-				A523BA9B1D09448F00A4D69B /* Client */,
+				A55231441D2A0CCF005ED8F4 /* Modal */,
 				A523BA2A1D04074F00A4D69B /* AppDelegate.swift */,
 				A523BA2C1D04074F00A4D69B /* RecordVewController.swift */,
 				A523BA2E1D04074F00A4D69B /* Main.storyboard */,
-				A523BA311D04074F00A4D69B /* Tell_Me.xcdatamodeld */,
 				A523BA5B1D04D47E00A4D69B /* AnalyzedViewController.swift */,
 				A523BA991D04DC4200A4D69B /* AppConstants.swift */,
 				A55231431D1D069B005ED8F4 /* Supporting Files */,
@@ -157,6 +158,16 @@
 				A523BA391D04074F00A4D69B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A55231441D2A0CCF005ED8F4 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				A523BA9B1D09448F00A4D69B /* Client */,
+				A523BA311D04074F00A4D69B /* Tell_Me.xcdatamodeld */,
+				A55231451D2A0D17005ED8F4 /* CoreDataStackManager.swift */,
+			);
+			name = Modal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +303,7 @@
 			files = (
 				A523BA331D04074F00A4D69B /* Tell_Me.xcdatamodeld in Sources */,
 				A523BA2D1D04074F00A4D69B /* RecordVewController.swift in Sources */,
+				A55231461D2A0D17005ED8F4 /* CoreDataStackManager.swift in Sources */,
 				A523BA9D1D0944B300A4D69B /* Client.swift in Sources */,
 				A523BA5C1D04D47F00A4D69B /* AnalyzedViewController.swift in Sources */,
 				A523BAA11D0CD82900A4D69B /* ConstantsClient.swift in Sources */,

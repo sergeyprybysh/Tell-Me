@@ -82,8 +82,29 @@ class RecordVewController: UIViewController, AVAudioRecorderDelegate {
     
     
     @IBAction func tapAnalyzedButton(sender: AnyObject) {
+        
         print("Press analyze button")
-        performSegueWithIdentifier("toAnalyzedVCSegue", sender: audioRecorder.url)
+        
+        let activityIndicator = UIActivityIndicatorView.init(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+        activityIndicator.center = view.center
+        activityIndicator.startAnimating()
+        view.addSubview(activityIndicator)
+        //performSegueWithIdentifier("toAnalyzedVCSegue", sender: audioRecorder.url)
+        
+        Client.sharedInstance().getAudioTranscript(audioRecorder.url) { (data, error) -> Void in
+            guard error == nil else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.presentAlertWithErrorMessage(error!.localizedDescription)})
+                return
+            }
+            dispatch_async(dispatch_get_main_queue(), {
+                //Will update data model here
+                let transcript = data![Client.IBMResponseKeys.transcript] as! String
+                let confidence = data![Client.IBMResponseKeys.confidence] as! Double
+            })
+        }
+
+        
     }
     
     

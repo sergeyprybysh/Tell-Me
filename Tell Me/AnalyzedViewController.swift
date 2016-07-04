@@ -28,21 +28,21 @@ class AnalyzedViewController: UIViewController {
     
     
     private func getTranscriptForAudio() {
-        Client.sharedInstance().getAudioTranscript(recordedAudioURL) { (data, error) -> Void in
-            guard error == nil else {
-                dispatch_async(dispatch_get_main_queue(), {
-                self.presentAlertWithErrorMessage(error!.localizedDescription)})
-                return
-            }
-            dispatch_async(dispatch_get_main_queue(), {
-            //Will update data model here
-            let transcript = data![Client.IBMResponseKeys.transcript] as! String
-            let confidence = data![Client.IBMResponseKeys.confidence] as! Double
-            self.mTranscript = transcript
-            self.mConfidence = confidence
-            self.refreshTextView()
-            })
-        }
+//        Client.sharedInstance().getAudioTranscript(recordedAudioURL) { (data, error) -> Void in
+//            guard error == nil else {
+//                dispatch_async(dispatch_get_main_queue(), {
+//                self.presentAlertWithErrorMessage(error!.localizedDescription)})
+//                return
+//            }
+//            dispatch_async(dispatch_get_main_queue(), {
+//            //Will update data model here
+//            let transcript = data![Client.IBMResponseKeys.transcript] as! String
+//            let confidence = data![Client.IBMResponseKeys.confidence] as! Double
+//            self.mTranscript = transcript
+//            self.mConfidence = confidence
+//            self.refreshTextView()
+//            })
+//        }
     }
     
     @IBAction func pressAnalyzeButton(sender: UIButton) {
@@ -53,12 +53,15 @@ class AnalyzedViewController: UIViewController {
         if let text = mTranscript {
             Client.sharedInstance().analyzeText(text, completionHandler: { (emotionTone, languageTone, socialTone, error) -> Void in
                 if let emotionT = emotionTone {
+                    print("THIS IS EMOTION")
                     print(emotionT)
                 }
                 if let languageT = languageTone {
+                    print("THIS IS LANGUAGE")
                     print(languageT)
                 }
                 if let socialT = socialTone {
+                    print("THIS IS SOCIAL")
                     print(socialT)
                 }
             })

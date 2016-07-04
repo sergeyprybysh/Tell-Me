@@ -118,19 +118,19 @@ extension Client {
         guard let documentTone = parsedResult[IBMResponceKeysToneAnalyzer.documentTone] as? [String: AnyObject] else {
             return (emotionTone: nil, languageTone: nil, socialTone: nil, error: NSError(domain: "Parsing", code: 3, userInfo: [NSLocalizedDescriptionKey: "Unable to parse JSON with key: \(IBMResponceKeysToneAnalyzer.documentTone)"]))
         }
-        guard let toneCategories = documentTone[IBMResponceKeysToneAnalyzer.toneCategories] as? [[String: AnyObject]?] else {
+        guard let toneCategories = documentTone[IBMResponceKeysToneAnalyzer.toneCategories] as! [AnyObject]? else {
             return (emotionTone: nil, languageTone: nil, socialTone: nil, error: NSError(domain: "Parsing", code: 3, userInfo: [NSLocalizedDescriptionKey: "Unable to parse JSON with key: \(IBMResponceKeysToneAnalyzer.toneCategories)"]))
         }
         
-        if let emotionTone = toneCategories[0] {
+        if let emotionTone = toneCategories[0] as? [String: AnyObject] {
             emotionT = emotionTone
         }
         
-        if let languageTone = toneCategories[1] {
+        if let languageTone = toneCategories[1] as? [String: AnyObject] {
             languageT = languageTone
         }
         
-        if let socialTone = toneCategories[2] {
+        if let socialTone = toneCategories[2] as? [String: AnyObject] {
             socialT = socialTone
         }
         
