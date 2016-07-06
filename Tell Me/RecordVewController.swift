@@ -8,41 +8,63 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 class RecordVewController: UIViewController, AVAudioRecorderDelegate {
 
     @IBOutlet weak var recordingLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
-    @IBOutlet weak var analyzeButton: UIButton!
+    @IBOutlet weak var recordingImage: UIImageView!
+    @IBOutlet weak var bottomLabel: UILabel!
     
     var audioRecorder: AVAudioRecorder!
+    var isRecording = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        recordingLabel.hidden = true
         stopButton.hidden = true
-        analyzeButton.hidden = true
         navigationItem.title = AppConstants.appName
+        recordingImage.image = UIImage(named: "inprogress")
+        recordingImage.hidden = true
+        bottomLabel.hidden = true
     }
+    
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        recordingLabel.hidden = true
-        analyzeButton.hidden = true
+    }
+    
+    func setUpStop() {
+        stopButton.imageView?.image = UIImage(named: "stop")
+        stopButton.hidden = false
+        bottomLabel.text = AppConstants.stop
+        bottomLabel.hidden = false
+    }
+    
+    func setUpGetTranscript() {
+        stopButton.imageView?.image = UIImage(named: "transcript")
+        stopButton.hidden = false
+        bottomLabel.text = AppConstants.transcript
+        bottomLabel.hidden = false
+    }
+    
+    var sharedContext: NSManagedObjectContext {
+        return CoreDataStackManager.sharedInstance().managedObjectContext
     }
 
 
-    @IBAction func tapRecordButton(sender: AnyObject) {
+    @IBAction func tapRecordButton(sender: UIButton) {
         
         print("Press record button")
         
-        recordingLabel.hidden = false
-        stopButton.hidden = false
-        recordButton.enabled = false
         recordingLabel.text = AppConstants.recordingLabel
-        analyzeButton.hidden = true
+        recordingImage.hidden = false
+        recordButton.enabled = false
+        setUpStop()
+        isRecording = true
         
         recordAudio()
     }
@@ -68,20 +90,26 @@ class RecordVewController: UIViewController, AVAudioRecorderDelegate {
     
     
     @IBAction func tapStopButton(sender: AnyObject) {
+        if isRecording {
+            
+            print("Press stop recording button")
         
-        print("Press stop recording button")
-        
-        recordingLabel.text = AppConstants.analyzeLabel
-        recordButton.enabled = true
-        stopButton.hidden = true
-        
-        audioRecorder.stop()
-        let session = AVAudioSession.sharedInstance()
-        try! session.setActive(false)
+            audioRecorder.stop()
+            let session = AVAudioSession.sharedInstance()
+            try! session.setActive(false)
+            
+            isRecording = false
+            recordingLabel.text = AppConstants.analyzeLabel
+            recordButton.enabled = true
+            setUpGetTranscript()
+        }
+        else {
+            tapAnalyzedButton()
+        }
     }
     
     
-    @IBAction func tapAnalyzedButton(sender: AnyObject) {
+    func tapAnalyzedButton() {
         
         print("Press analyze button")
         
@@ -89,22 +117,23 @@ class RecordVewController: UIViewController, AVAudioRecorderDelegate {
         activityIndicator.center = view.center
         activityIndicator.startAnimating()
         view.addSubview(activityIndicator)
-        //performSegueWithIdentifier("toAnalyzedVCSegue", sender: audioRecorder.url)
         
         Client.sharedInstance().getAudioTranscript(audioRecorder.url) { (data, error) -> Void in
             guard error == nil else {
                 dispatch_async(dispatch_get_main_queue(), {
+                    activityIndicator.stopAnimating()
                     self.presentAlertWithErrorMessage(error!.localizedDescription)})
                 return
             }
             dispatch_async(dispatch_get_main_queue(), {
-                //Will update data model here
+                activityIndicator.stopAnimating()
                 let transcript = data![Client.IBMResponseKeys.transcript] as! String
                 let confidence = data![Client.IBMResponseKeys.confidence] as! Double
+                let textObject = TextObject(text: transcript, confidence: confidence, context: self.sharedContext)
+                CoreDataStackManager.sharedInstance().saveContext()
+                self.performSegueWithIdentifier("toAnalyzedVCSegue", sender: textObject)
             })
         }
-
-        
     }
     
     
@@ -112,8 +141,8 @@ class RecordVewController: UIViewController, AVAudioRecorderDelegate {
         
         if segue.identifier == "toAnalyzedVCSegue" {
             let analyzedVC = segue.destinationViewController as! AnalyzedViewController
-            let recordedAudioURL = sender as! NSURL
-            analyzedVC.recordedAudioURL = recordedAudioURL
+            let textObject = sender as! TextObject
+            analyzedVC.textObject = textObject
             let backItem = UIBarButtonItem()
             backItem.title = AppConstants.navigationBackButton
             navigationItem.backBarButtonItem = backItem
@@ -128,7 +157,7 @@ class RecordVewController: UIViewController, AVAudioRecorderDelegate {
         
         if flag {
             print("Audio successfully saved")
-            analyzeButton.hidden = false
+            //analyzeButton.hidden = false
         }
         else {
             let message = "There was an error while saving recorded aoudio"

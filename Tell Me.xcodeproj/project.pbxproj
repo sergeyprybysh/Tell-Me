@@ -25,6 +25,7 @@
 		A552314C1D2A1161005ED8F4 /* EmotionsTone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552314B1D2A1161005ED8F4 /* EmotionsTone.swift */; };
 		A552314E1D2A15F1005ED8F4 /* LanguageTone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552314D1D2A15F1005ED8F4 /* LanguageTone.swift */; };
 		A55231501D2A172E005ED8F4 /* SocialTone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552314F1D2A172E005ED8F4 /* SocialTone.swift */; };
+		A55231521D2B8F37005ED8F4 /* ParsersClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55231511D2B8F37005ED8F4 /* ParsersClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		A552314B1D2A1161005ED8F4 /* EmotionsTone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionsTone.swift; sourceTree = "<group>"; };
 		A552314D1D2A15F1005ED8F4 /* LanguageTone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageTone.swift; sourceTree = "<group>"; };
 		A552314F1D2A172E005ED8F4 /* SocialTone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialTone.swift; sourceTree = "<group>"; };
+		A55231511D2B8F37005ED8F4 /* ParsersClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsersClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			children = (
 				A523BA9C1D0944B300A4D69B /* Client.swift */,
 				A523BA9E1D0CD74B00A4D69B /* ConvenienceClient.swift */,
+				A55231511D2B8F37005ED8F4 /* ParsersClient.swift */,
 				A523BAA01D0CD82900A4D69B /* ConstantsClient.swift */,
 			);
 			name = Client;
@@ -318,6 +321,7 @@
 				A55231461D2A0D17005ED8F4 /* CoreDataStackManager.swift in Sources */,
 				A552314C1D2A1161005ED8F4 /* EmotionsTone.swift in Sources */,
 				A523BA9D1D0944B300A4D69B /* Client.swift in Sources */,
+				A55231521D2B8F37005ED8F4 /* ParsersClient.swift in Sources */,
 				A55231501D2A172E005ED8F4 /* SocialTone.swift in Sources */,
 				A523BA5C1D04D47F00A4D69B /* AnalyzedViewController.swift in Sources */,
 				A523BAA11D0CD82900A4D69B /* ConstantsClient.swift in Sources */,

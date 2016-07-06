@@ -59,7 +59,7 @@ extension Client {
     }
     
     
-    func analyzeText(text: String, completionHandler handler: (emotionTone: [String: AnyObject]?, languageTone: [String: AnyObject]?, socialTone: [String: AnyObject]?, error: NSError?) -> Void) {
+    func analyzeText(text: String, completionHandler handler: (emotionTone: [EmotionsTone.Emotions : Double]?, languageTone: [LanguageTone.Language : Double]?, socialTone: [SocialTone.Social : Double]?, error: NSError?) -> Void) {
             
         let comp = NSURLComponents()
             
@@ -91,52 +91,13 @@ extension Client {
                 handler(emotionTone: nil, languageTone: nil, socialTone: nil, error: error)
                 return
             }
-            let emotionT = parsedData.emotionTone
-            let languageT = parsedData.languageTone
-            let socialT = parsedData.socialTone
+            let emotionT = parsedData.emotionTone!
+            let languageT = parsedData.languageTone!
+            let socialT =  parsedData.socialTone!
             
             handler(emotionTone: emotionT, languageTone: languageT, socialTone: socialT, error: nil)
         }
     }
-    
-    
-    private func parseToneAnalyzerResponse(data: NSData) -> (emotionTone: [String: AnyObject]?, languageTone: [String: AnyObject]?, socialTone: [String: AnyObject]?, error: NSError?) {
-        
-        var emotionT: [String: AnyObject]?
-        var languageT: [String: AnyObject]?
-        var socialT: [String: AnyObject]?
-        
-        let parsedResult: AnyObject!
-        do {
-            parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
-        }
-        catch {
-            return (emotionTone: nil, languageTone: nil, socialTone: nil, error: NSError(domain: "Serialization", code: 3, userInfo: [NSLocalizedDescriptionKey: "Unable deserialize data"]))
-        }
-        print(parsedResult)
-        
-        guard let documentTone = parsedResult[IBMResponceKeysToneAnalyzer.documentTone] as? [String: AnyObject] else {
-            return (emotionTone: nil, languageTone: nil, socialTone: nil, error: NSError(domain: "Parsing", code: 3, userInfo: [NSLocalizedDescriptionKey: "Unable to parse JSON with key: \(IBMResponceKeysToneAnalyzer.documentTone)"]))
-        }
-        guard let toneCategories = documentTone[IBMResponceKeysToneAnalyzer.toneCategories] as! [AnyObject]? else {
-            return (emotionTone: nil, languageTone: nil, socialTone: nil, error: NSError(domain: "Parsing", code: 3, userInfo: [NSLocalizedDescriptionKey: "Unable to parse JSON with key: \(IBMResponceKeysToneAnalyzer.toneCategories)"]))
-        }
-        
-        if let emotionTone = toneCategories[0] as? [String: AnyObject] {
-            emotionT = emotionTone
-        }
-        
-        if let languageTone = toneCategories[1] as? [String: AnyObject] {
-            languageT = languageTone
-        }
-        
-        if let socialTone = toneCategories[2] as? [String: AnyObject] {
-            socialT = socialTone
-        }
-        
-        return (emotionTone: emotionT, languageTone: languageT, socialTone: socialT, error: nil)
-    }
-    
     
     
     private func getBasicAuthCredentialsFor(service: Service) -> String {
