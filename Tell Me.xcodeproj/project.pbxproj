@@ -124,8 +124,8 @@
 				A55231441D2A0CCF005ED8F4 /* Modal */,
 				A523BA2A1D04074F00A4D69B /* AppDelegate.swift */,
 				A523BA2C1D04074F00A4D69B /* RecordVewController.swift */,
-				A523BA2E1D04074F00A4D69B /* Main.storyboard */,
 				A523BA5B1D04D47E00A4D69B /* AnalyzedViewController.swift */,
+				A523BA2E1D04074F00A4D69B /* Main.storyboard */,
 				A523BA991D04DC4200A4D69B /* AppConstants.swift */,
 				A55231431D1D069B005ED8F4 /* Supporting Files */,
 			);

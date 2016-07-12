@@ -27,20 +27,26 @@ class AnalyzedViewController: UIViewController {
     }
     
     private func analyzeTextWithIBM() {
-            Client.sharedInstance().analyzeText(textObject.text, completionHandler: { (emotionTone, languageTone, socialTone, error) -> Void in
-                if let emotionT = emotionTone {
-                    print("THIS IS EMOTION")
-                    print(emotionT)
+            Client.sharedInstance().analyzeText(textObject.text) { (emotionTone, languageTone, socialTone, error) -> Void in
+                
+                guard error == nil else {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.presentAlertWithErrorMessage(error!.localizedDescription)})
+                    return
                 }
-                if let languageT = languageTone {
-                    print("THIS IS LANGUAGE")
-                    print(languageT)
-                }
-                if let socialT = socialTone {
-                    print("THIS IS SOCIAL")
-                    print(socialT)
-                }
-            })
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    if let emotionT = emotionTone {
+
+                    }
+                    if let languageT = languageTone {
+
+                    }
+                    if let socialT = socialTone {
+
+                    }
+                })
+            }
         
     }
     

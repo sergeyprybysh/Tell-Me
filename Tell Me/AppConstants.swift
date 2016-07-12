@@ -16,6 +16,7 @@ struct AppConstants {
     //MARK: Application labels
     static let recordingLabel = "Recording in progress"
     static let analyzeLabel = "Analyze recorded audio"
+    static let reRecord = "Tap to re-record"
     static let stop = "Stop"
     static let transcript = "Get audio transcript"
     

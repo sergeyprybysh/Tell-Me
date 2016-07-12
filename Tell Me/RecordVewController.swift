@@ -99,8 +99,9 @@ class RecordVewController: UIViewController, AVAudioRecorderDelegate {
             try! session.setActive(false)
             
             isRecording = false
-            recordingLabel.text = AppConstants.analyzeLabel
+            recordingLabel.text = AppConstants.reRecord
             recordButton.enabled = true
+            recordingImage.hidden = true
             setUpGetTranscript()
         }
         else {
@@ -153,14 +154,13 @@ class RecordVewController: UIViewController, AVAudioRecorderDelegate {
     //MARK: implement AVAudioRecorderDelegate methods
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
-        print("Audioecorder finished recording")
+        print("Audiorecorder finished recording")
         
         if flag {
             print("Audio successfully saved")
-            //analyzeButton.hidden = false
         }
         else {
-            let message = "There was an error while saving recorded aoudio"
+            let message = "There was an error while saving recorded audio"
             print(message)
             presentAlertWithErrorMessage(message)
         }
