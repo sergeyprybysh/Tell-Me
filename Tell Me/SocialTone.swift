@@ -19,6 +19,8 @@ class SocialTone: NSManagedObject {
     
     @NSManaged var textObject: TextObject?
     
+    let chartStrings = ["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Emotional Range"]
+    
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)

@@ -19,6 +19,8 @@ class EmotionsTone: NSManagedObject {
     
     @NSManaged var textObject: TextObject?
     
+    let chartStrings = ["Anger", "Disgust", "Fear", "Joy", "Sadness"]
+    
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)

@@ -17,6 +17,8 @@ class LanguageTone: NSManagedObject {
     
     @NSManaged var textObject: TextObject?
     
+    let chartStrings = ["Analytical", "Confident", "Tentative"]
+    
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
