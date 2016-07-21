@@ -23,11 +23,14 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
     var emotions: EmotionsTone?
     var language: LanguageTone?
     var social: SocialTone?
+    
+    var hasData = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViews.delegate = self
         refreshTextView()
+        fetchResults()
         tableViews.reloadData()
     }
     
@@ -51,15 +54,20 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
                 
                 dispatch_async(dispatch_get_main_queue(), {
                     if let emotionT = emotionTone {
-                        _ = EmotionsTone(emotions: emotionT, context: self.sharedContext)
+                        let emTone = EmotionsTone(emotions: emotionT, context: self.sharedContext)
+                        emTone.textObject = self.textObject
                     }
                     if let languageT = languageTone {
-                        _ = LanguageTone(language: languageT, context: self.sharedContext)
+                        let langTone = LanguageTone(language: languageT, context: self.sharedContext)
+                        langTone.textObject = self.textObject
                     }
                     if let socialT = socialTone {
-                        _ = SocialTone(social: socialT, context: self.sharedContext)
+                        let sTone = SocialTone(social: socialT, context: self.sharedContext)
+                        sTone.textObject = self.textObject
                     }
                     CoreDataStackManager.sharedInstance().saveContext()
+                    self.fetchResults()
+                    self.tableViews.reloadData()
                 })
             }
         
@@ -72,18 +80,35 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
     
     //MARK: implement UITableViewDelegate methods
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 3
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Emotions"
+        case 1:
+            return "Language"
+        case 2:
+            return "Social"
+        default:
+            return nil
+        }
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: ChartTableCell = tableView.dequeueReusableCellWithIdentifier("chartCell") as! ChartTableCell
-        let finalCell = configureCell(cell, indexPath: indexPath.row)
+        let finalCell = configureCell(cell, indexPath: indexPath.section)
         return finalCell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        presentAlertWithErrorMessage("Alert\(indexPath.row)")
+        presentAlertWithErrorMessage("Alert\(indexPath.section)")
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -97,33 +122,36 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
 
         switch indexPath {
         case 0:
-            dataValue.append(BarChartDataEntry(value: emotions!.anger, xIndex: 0))
-            dataValue.append(BarChartDataEntry(value: emotions!.disgust, xIndex: 1))
-            dataValue.append(BarChartDataEntry(value: emotions!.fear, xIndex: 2))
-            dataValue.append(BarChartDataEntry(value: emotions!.joy, xIndex: 3))
-            dataValue.append(BarChartDataEntry(value: emotions!.sadness, xIndex: 4))
+            if let emotionsItem = emotions {
+            dataValue.append(BarChartDataEntry(value: emotionsItem.anger, xIndex: 0))
+            dataValue.append(BarChartDataEntry(value: emotionsItem.disgust, xIndex: 1))
+            dataValue.append(BarChartDataEntry(value: emotionsItem.fear, xIndex: 2))
+            dataValue.append(BarChartDataEntry(value: emotionsItem.joy, xIndex: 3))
+            dataValue.append(BarChartDataEntry(value: emotionsItem.sadness, xIndex: 4))
             let chartData = BarChartDataSet(yVals: dataValue, label: "Emotions Tone Level")
-            let chart = BarChartData(xVals: emotions!.chartStrings, dataSet: chartData)
+            let chart = BarChartData(xVals: emotionsItem.chartStrings, dataSet: chartData)
             cell.chartView.data = chart
-            break
+            }
         case 1:
-            dataValue.append(BarChartDataEntry(value: language!.analytical, xIndex: 0))
-            dataValue.append(BarChartDataEntry(value: language!.confident, xIndex: 1))
-            dataValue.append(BarChartDataEntry(value: language!.tentative, xIndex: 2))
+            if let languageItem = language {
+            dataValue.append(BarChartDataEntry(value: languageItem.analytical, xIndex: 0))
+            dataValue.append(BarChartDataEntry(value: languageItem.confident, xIndex: 1))
+            dataValue.append(BarChartDataEntry(value: languageItem.tentative, xIndex: 2))
             let chartData = BarChartDataSet(yVals: dataValue, label: "Language Tone Level")
-            let chart = BarChartData(xVals: language!.chartStrings, dataSet: chartData)
+            let chart = BarChartData(xVals: languageItem.chartStrings, dataSet: chartData)
             cell.chartView.data = chart
-            break
+            }
         case 2:
-            dataValue.append(BarChartDataEntry(value: social!.openness, xIndex: 0))
-            dataValue.append(BarChartDataEntry(value: social!.conscientiousness, xIndex: 1))
-            dataValue.append(BarChartDataEntry(value: social!.extraversion, xIndex: 2))
-            dataValue.append(BarChartDataEntry(value: social!.agreeableness, xIndex: 3))
-            dataValue.append(BarChartDataEntry(value: social!.emotionalRange, xIndex: 4))
+            if let socialItem = social {
+            dataValue.append(BarChartDataEntry(value: socialItem.openness, xIndex: 0))
+            dataValue.append(BarChartDataEntry(value: socialItem.conscientiousness, xIndex: 1))
+            dataValue.append(BarChartDataEntry(value: socialItem.extraversion, xIndex: 2))
+            dataValue.append(BarChartDataEntry(value: socialItem.agreeableness, xIndex: 3))
+            dataValue.append(BarChartDataEntry(value: socialItem.emotionalRange, xIndex: 4))
             let chartData = BarChartDataSet(yVals: dataValue, label: "Social Tone Level")
-            let chart = BarChartData(xVals: social!.chartStrings, dataSet: chartData)
+            let chart = BarChartData(xVals: socialItem.chartStrings, dataSet: chartData)
             cell.chartView.data = chart
-            break
+            }
         default:
             break
         }
@@ -131,4 +159,68 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
+    
+    func fetchResults() {
+        if let emotionsResults = fetchEmotionsTone() {
+            if !emotionsResults.isEmpty {
+                emotions = emotionsResults[0]
+                hasData = true
+            }
+        }
+        
+        if let languageResults = fetchLanguageTone() {
+            if !languageResults.isEmpty {
+                language = languageResults[0]
+                hasData = true
+            }
+        }
+        
+        if let socialResults = fetchSocialTone() {
+            if !socialResults.isEmpty {
+                social = socialResults[0]
+                hasData = true
+            }
+        }
+    }
+    
+    func fetchEmotionsTone() -> [EmotionsTone]? {
+        
+        let fetchRequest = NSFetchRequest(entityName: "EmotionsTone")
+        fetchRequest.sortDescriptors = []
+        fetchRequest.predicate = NSPredicate(format: "textObject == %@", self.textObject)
+        do {
+            return try sharedContext.executeFetchRequest(fetchRequest) as? [EmotionsTone]
+        }
+        catch _ {
+            return nil
+        }
+    }
+    
+    func fetchLanguageTone() -> [LanguageTone]? {
+        
+        let fetchRequest = NSFetchRequest(entityName: "LanguageTone")
+        fetchRequest.sortDescriptors = []
+        fetchRequest.predicate = NSPredicate(format: "textObject == %@", self.textObject)
+        do {
+            return try sharedContext.executeFetchRequest(fetchRequest) as? [LanguageTone]
+        }
+        catch _ {
+            return nil
+        }
+    }
+    
+    func fetchSocialTone() -> [SocialTone]? {
+        
+        let fetchRequest = NSFetchRequest(entityName: "SocialTone")
+        fetchRequest.sortDescriptors = []
+        fetchRequest.predicate = NSPredicate(format: "textObject == %@", self.textObject)
+        do {
+            return try sharedContext.executeFetchRequest(fetchRequest) as? [SocialTone]
+        }
+        catch _ {
+            return nil
+        }
+    }
+    
 }
+

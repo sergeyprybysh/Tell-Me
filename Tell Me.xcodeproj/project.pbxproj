@@ -30,6 +30,9 @@
 		A55231501D2A172E005ED8F4 /* SocialTone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552314F1D2A172E005ED8F4 /* SocialTone.swift */; };
 		A55231521D2B8F37005ED8F4 /* ParsersClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55231511D2B8F37005ED8F4 /* ParsersClient.swift */; };
 		A55DDE4B1D3A0156001F349D /* ChartTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55DDE4A1D3A0156001F349D /* ChartTableCell.swift */; };
+		A560B2051D40A01E0027EB8E /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A560B2041D40A01E0027EB8E /* DescriptionViewController.swift */; };
+		A560B2071D40A4280027EB8E /* DescriptionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A560B2061D40A4280027EB8E /* DescriptionTableCell.swift */; };
+		A560B2091D40AC560027EB8E /* DescriptionText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A560B2081D40AC560027EB8E /* DescriptionText.swift */; };
 		A592114D1D34CFD700E4FF0D /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A592114C1D34CFD700E4FF0D /* Charts.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +85,9 @@
 		A552314F1D2A172E005ED8F4 /* SocialTone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialTone.swift; sourceTree = "<group>"; };
 		A55231511D2B8F37005ED8F4 /* ParsersClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsersClient.swift; sourceTree = "<group>"; };
 		A55DDE4A1D3A0156001F349D /* ChartTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartTableCell.swift; sourceTree = "<group>"; };
+		A560B2041D40A01E0027EB8E /* DescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
+		A560B2061D40A4280027EB8E /* DescriptionTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionTableCell.swift; sourceTree = "<group>"; };
+		A560B2081D40AC560027EB8E /* DescriptionText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionText.swift; sourceTree = "<group>"; };
 		A592114C1D34CFD700E4FF0D /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "Pods/../build/Debug-iphoneos/Charts/Charts.framework"; sourceTree = "<group>"; };
 		B96DEDEF9DAD13F7F87A0EB4 /* Pods-Tell MeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tell MeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tell MeUITests/Pods-Tell MeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BDA329033AD718C0607BE5A2 /* Pods-Tell Me.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tell Me.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tell Me/Pods-Tell Me.debug.xcconfig"; sourceTree = "<group>"; };
@@ -171,10 +177,13 @@
 				A523BA2A1D04074F00A4D69B /* AppDelegate.swift */,
 				A523BA2C1D04074F00A4D69B /* RecordVewController.swift */,
 				A523BA5B1D04D47E00A4D69B /* AnalyzedViewController.swift */,
+				A560B2041D40A01E0027EB8E /* DescriptionViewController.swift */,
 				A523BA2E1D04074F00A4D69B /* Main.storyboard */,
 				A523BA991D04DC4200A4D69B /* AppConstants.swift */,
 				A55DDE4A1D3A0156001F349D /* ChartTableCell.swift */,
+				A560B2061D40A4280027EB8E /* DescriptionTableCell.swift */,
 				A55231431D1D069B005ED8F4 /* Supporting Files */,
+				A560B2081D40AC560027EB8E /* DescriptionText.swift */,
 			);
 			path = "Tell Me";
 			sourceTree = "<group>";
@@ -496,8 +505,10 @@
 			files = (
 				A523BA331D04074F00A4D69B /* Tell_Me.xcdatamodeld in Sources */,
 				A523BA2D1D04074F00A4D69B /* RecordVewController.swift in Sources */,
+				A560B2071D40A4280027EB8E /* DescriptionTableCell.swift in Sources */,
 				A55231461D2A0D17005ED8F4 /* CoreDataStackManager.swift in Sources */,
 				A552314C1D2A1161005ED8F4 /* EmotionsTone.swift in Sources */,
+				A560B2091D40AC560027EB8E /* DescriptionText.swift in Sources */,
 				A523BA9D1D0944B300A4D69B /* Client.swift in Sources */,
 				A55231521D2B8F37005ED8F4 /* ParsersClient.swift in Sources */,
 				A55231501D2A172E005ED8F4 /* SocialTone.swift in Sources */,
@@ -507,6 +518,7 @@
 				A523BA2B1D04074F00A4D69B /* AppDelegate.swift in Sources */,
 				A55231481D2A0F5F005ED8F4 /* TextObject.swift in Sources */,
 				A523BA9A1D04DC4200A4D69B /* AppConstants.swift in Sources */,
+				A560B2051D40A01E0027EB8E /* DescriptionViewController.swift in Sources */,
 				A523BA9F1D0CD74B00A4D69B /* ConvenienceClient.swift in Sources */,
 				A552314E1D2A15F1005ED8F4 /* LanguageTone.swift in Sources */,
 			);
