@@ -182,8 +182,8 @@
 				A523BA991D04DC4200A4D69B /* AppConstants.swift */,
 				A55DDE4A1D3A0156001F349D /* ChartTableCell.swift */,
 				A560B2061D40A4280027EB8E /* DescriptionTableCell.swift */,
-				A55231431D1D069B005ED8F4 /* Supporting Files */,
 				A560B2081D40AC560027EB8E /* DescriptionText.swift */,
+				A55231431D1D069B005ED8F4 /* Supporting Files */,
 			);
 			path = "Tell Me";
 			sourceTree = "<group>";

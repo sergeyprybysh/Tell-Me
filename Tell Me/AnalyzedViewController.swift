@@ -11,8 +11,9 @@ import AVFoundation
 import UIKit
 import Charts
 import CoreData
+import MessageUI
 
-class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate {
     
     
     @IBOutlet weak var tableViews: UITableView!
@@ -28,10 +29,22 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpNavigationBar()
         tableViews.delegate = self
         refreshTextView()
         fetchResults()
         tableViews.reloadData()
+    }
+    
+    func setUpNavigationBar() {
+        
+        let saveImage = UIImage(named: "save")!
+        let sendImage   = UIImage(named: "send")!
+        
+        let saveButton   = UIBarButtonItem(image: saveImage,  style: .Plain, target: self, action: #selector(AnalyzedViewController.tapSaveButton))
+        let sendButton = UIBarButtonItem(image: sendImage,  style: .Plain, target: self, action: #selector(AnalyzedViewController.tapSendButton))
+        
+        navigationItem.rightBarButtonItems = [sendButton, saveButton]
     }
     
     var sharedContext: NSManagedObjectContext {
@@ -73,6 +86,42 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
         
     }
     
+    func tapSaveButton() {
+        print("Tap Save Button")
+        let alert = UIAlertController(title: "Save Message", message: "Enter name for message", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
+    func tapSendButton() {
+        let mailComposeVC = configureMailComposeVC("Sergey is a cool guy")
+        if MFMailComposeViewController.canSendMail() {
+            self.presentViewController(mailComposeVC,animated: true, completion: nil)
+        }
+        else {
+            presentAlertWithErrorMessage("Cannot send sessage at this time")
+        }
+    }
+    
+    func configureMailComposeVC(message: String) -> MFMailComposeViewController {
+        let mailComposeVC = MFMailComposeViewController()
+        mailComposeVC.mailComposeDelegate = self
+        mailComposeVC.setMessageBody(message, isHTML: false)
+        return mailComposeVC
+    }
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        switch result.rawValue {
+        case MFMailComposeResultCancelled.rawValue:
+            print("Cancelled")
+        case MFMailComposeResultSent.rawValue:
+            print("Send")
+        default:
+            break
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     func refreshTextView() {
         transcriptTextView.text = textObject.text
@@ -108,13 +157,25 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        presentAlertWithErrorMessage("Alert\(indexPath.section)")
+        performSegueWithIdentifier("toDescriptionVCSegue", sender: indexPath.section)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 150
     }
     
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "toDescriptionVCSegue" {
+            let descriptionVC = segue.destinationViewController as! DescriptionViewController
+            let index = sender as! Int
+            descriptionVC.index = index
+            let backItem = UIBarButtonItem()
+            backItem.title = AppConstants.navigationBackButton
+            navigationItem.backBarButtonItem = backItem
+        }
+    }
     
     private func configureCell(cell: ChartTableCell, indexPath: Int) -> ChartTableCell {
         
@@ -221,6 +282,8 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
             return nil
         }
     }
+    
+    
     
 }
 

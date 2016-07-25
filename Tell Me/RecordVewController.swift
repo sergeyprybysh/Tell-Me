@@ -131,7 +131,7 @@ class RecordVewController: UIViewController, AVAudioRecorderDelegate {
                 let transcript = data![Client.IBMResponseKeys.transcript] as! String
                 let confidence = data![Client.IBMResponseKeys.confidence] as! Double
                 let textObject = TextObject(text: transcript, confidence: confidence, context: self.sharedContext)
-                CoreDataStackManager.sharedInstance().saveContext()
+                //CoreDataStackManager.sharedInstance().saveContext()
                 self.performSegueWithIdentifier("toAnalyzedVCSegue", sender: textObject)
             })
         }

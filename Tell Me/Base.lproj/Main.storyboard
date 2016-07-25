@@ -364,7 +364,7 @@
                     <connections>
                         <outlet property="tableViews" destination="u36-2N-7OO" id="XpW-4h-77k"/>
                         <outlet property="transcriptTextView" destination="FfD-26-RZS" id="jFz-6s-Kax"/>
-                        <segue destination="LQM-pl-Rfq" kind="show" id="8eh-Rn-mTh"/>
+                        <segue destination="LQM-pl-Rfq" kind="show" identifier="toDescriptionVCSegue" id="8eh-Rn-mTh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJr-mA-AxL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -495,24 +495,28 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="LQM-pl-Rfq" id="Mbz-PW-FfC"/>
+                                    <outlet property="delegate" destination="LQM-pl-Rfq" id="q6B-VJ-y9L"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qoS-hA-hkF" firstAttribute="bottom" secondItem="Slv-Q7-h9U" secondAttribute="bottomMargin" id="1EG-1o-yaB"/>
-                            <constraint firstItem="qoS-hA-hkF" firstAttribute="top" secondItem="tqg-Sa-Fqe" secondAttribute="bottom" id="2Hk-co-6A6"/>
-                            <constraint firstItem="qoS-hA-hkF" firstAttribute="leading" secondItem="Slv-Q7-h9U" secondAttribute="leadingMargin" constant="-20" id="uAJ-Cs-tBP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qoS-hA-hkF" secondAttribute="trailing" constant="-20" id="zH4-Uq-Hig"/>
+                            <constraint firstItem="qoS-hA-hkF" firstAttribute="bottom" secondItem="Slv-Q7-h9U" secondAttribute="bottomMargin" id="FDS-vD-HGF"/>
+                            <constraint firstItem="qoS-hA-hkF" firstAttribute="leading" secondItem="Slv-Q7-h9U" secondAttribute="leadingMargin" constant="-20" id="YT8-0v-cx0"/>
+                            <constraint firstItem="qoS-hA-hkF" firstAttribute="top" secondItem="tqg-Sa-Fqe" secondAttribute="bottom" id="peI-uc-jIA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qoS-hA-hkF" secondAttribute="trailing" constant="-20" id="y3B-yr-zc6"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="qoS-hA-hkF"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="1EG-1o-yaB"/>
-                                <exclude reference="2Hk-co-6A6"/>
-                                <exclude reference="uAJ-Cs-tBP"/>
-                                <exclude reference="zH4-Uq-Hig"/>
+                                <exclude reference="FDS-vD-HGF"/>
+                                <exclude reference="YT8-0v-cx0"/>
+                                <exclude reference="peI-uc-jIA"/>
+                                <exclude reference="y3B-yr-zc6"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -520,10 +524,10 @@
                                 <include reference="qoS-hA-hkF"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="1EG-1o-yaB"/>
-                                <include reference="2Hk-co-6A6"/>
-                                <include reference="uAJ-Cs-tBP"/>
-                                <include reference="zH4-Uq-Hig"/>
+                                <include reference="FDS-vD-HGF"/>
+                                <include reference="YT8-0v-cx0"/>
+                                <include reference="peI-uc-jIA"/>
+                                <include reference="y3B-yr-zc6"/>
                             </mask>
                         </variation>
                     </view>

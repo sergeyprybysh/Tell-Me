@@ -20,27 +20,43 @@ struct EmotionsDescription {
     
     private static let sadness = "Indicates a feeling of loss and disadvantage. When a person can be observed to be quiet, less energetic and withdrawn, it may be inferred that sadness exists."
     
-    let emotions = ["Anger", "Disgust", "Fear", "Joy", "Sadness"]
+    static let tone = ["Anger", "Disgust", "Fear", "Joy", "Sadness"]
     
-    let level = ["0.5 / 0.75", "0.5 / 0.75", "0.5 / 0.75", "0.5 / 0.75", "0.5 / 0.75"]
+    static let level = ["0.5 / 0.75", "0.5 / 0.75", "0.5 / 0.75", "0.5 / 0.75", "0.5 / 0.75"]
     
-    let description = [anger, disgust, fear, joy, sadness]
+    static let description = [anger, disgust, fear, joy, sadness]
 }
 
 struct LanguageDescription {
     
-    let emotions = ["Anger", "Disgust", "Fear", "Joy", "Sadness"]
+    private static let analytic = "A person's reasoning and analytical attitude about things."
     
-    let level = ["0.5 / 0.75", "0.5 / 0.75", "0.5 / 0.75", "0.5 / 0.75", "0.5 / 0.75"]
+    private static let confidence = "A persons degree of certainty."
     
-    let description = [""]
+    private static let tentative = "A persons degree of inhibition."
+    
+    static let tone = ["Analytic", "Confidence", "Tentative"]
+    
+    static let level = ["0.25 / 0.75", "0.25 / 0.75", "0.25 / 0.75"]
+    
+    static let description = [analytic, confidence, tentative]
 }
 
 struct SocialDescription {
     
-    let emotions = ["Anger", "Disgust", "Fear", "Joy", "Sadness"]
+    private static let openness = "The extent a person is open to experience a variety of activities."
     
-    let level = ["0.5 / 0.75", "0.5 / 0.75", "0.5 / 0.75", "0.5 / 0.75", "0.5 / 0.75"]
+    private static let conscientiousness = "The tendency to act in an organized or thoughtful way."
     
-    let description = [""]
+    private static let extraversion = "The tendency to seek stimulation in the company of others."
+    
+    private static let agreeableness = "The tendency to be compassionate and cooperative towards others."
+    
+    private static let emotionalRange = "The extent a personâ's emotion is sensitive to the environment."
+    
+    static let tone = ["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Emotional Range"]
+    
+    static let level = ["0.25 / 0.75", "0.25 / 0.75", "0.25 / 0.75", "0.25 / 0.75", "0.25 / 0.75"]
+    
+    static let description = [openness, conscientiousness, extraversion, agreeableness, emotionalRange ]
 }
