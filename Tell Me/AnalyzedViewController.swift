@@ -18,6 +18,8 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var tableViews: UITableView!
     @IBOutlet weak var transcriptTextView: UITextView!
+    var dialogTextField: UITextField!
+
     
     var textObject: TextObject!
     
@@ -88,10 +90,7 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tapSaveButton() {
         print("Tap Save Button")
-        let alert = UIAlertController(title: "Save Message", message: "Enter name for message", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
-        
+        showDialogForName()
     }
     
     func tapSendButton() {
@@ -283,7 +282,27 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    func configurationTextField(textField: UITextField!) {
+        textField.placeholder = "Enter a name"
+        dialogTextField = textField
+    }
     
+    func handleCancel(alertView: UIAlertAction!) {
+        print("Cancelled !!")
+    }
+    
+    func showDialogForName() {
+        let alert = UIAlertController(title: "Save", message: "Enter a name to save this Message", preferredStyle: .Alert)
+    
+        alert.addTextFieldWithConfigurationHandler(configurationTextField)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler:handleCancel))
+        alert.addAction(UIAlertAction(title: "Save", style: .Default, handler:{ (UIAlertAction) in
+            print("Done !!")
+            //TODO: Save context here
+            }))
+        self.presentViewController(alert, animated: true, completion: {
+        })
+    }
     
 }
 
