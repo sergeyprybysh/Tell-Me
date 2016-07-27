@@ -19,6 +19,7 @@ struct AppConstants {
     static let reRecord = "Tap to re-record"
     static let stop = "Stop"
     static let transcript = "Get audio transcript"
+    static let savedMessages = "Saved Messages"
     
     //MARK: Application buttons
     static let navigationBackButton = "Back"

@@ -13,7 +13,7 @@ import Charts
 import CoreData
 import MessageUI
 
-class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate {
+class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate, UITextViewDelegate {
     
     
     @IBOutlet weak var tableViews: UITableView!
@@ -33,6 +33,7 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         setUpNavigationBar()
         tableViews.delegate = self
+        transcriptTextView.delegate = self
         refreshTextView()
         fetchResults()
         tableViews.reloadData()
@@ -59,6 +60,7 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     private func analyzeTextWithIBM() {
+        print("New" + textObject.text)
             Client.sharedInstance().analyzeText(textObject.text) { (emotionTone, languageTone, socialTone, error) -> Void in
                 
                 guard error == nil else {
@@ -85,7 +87,6 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
                     self.tableViews.reloadData()
                 })
             }
-        
     }
     
     func tapSaveButton() {
@@ -94,7 +95,7 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tapSendButton() {
-        let mailComposeVC = configureMailComposeVC("Sergey is a cool guy")
+        let mailComposeVC = configureMailComposeVC(textObject.text)
         if MFMailComposeViewController.canSendMail() {
             self.presentViewController(mailComposeVC,animated: true, completion: nil)
         }
@@ -298,10 +299,33 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler:handleCancel))
         alert.addAction(UIAlertAction(title: "Save", style: .Default, handler:{ (UIAlertAction) in
             print("Done !!")
-            //TODO: Save context here
+            let textField = alert.textFields![0]
+            let text = textField.text
+            if text!.isEmpty {
+                dispatch_async(dispatch_get_main_queue(), {
+                self.presentAlertWithErrorMessage("Enter a valid name")
+                return
+                })
+            }
+            dispatch_async(dispatch_get_main_queue(), {
+                self.textObject.name = text
+                CoreDataStackManager.sharedInstance().saveContext()
+                })
             }))
         self.presentViewController(alert, animated: true, completion: {
         })
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        textObject.text = textView.text
     }
     
 }

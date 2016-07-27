@@ -10,6 +10,8 @@
 		30D0AAB3CDC14DBC87C5B167 /* Pods_Tell_MeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26FE18A8BD5E111017844C23 /* Pods_Tell_MeUITests.framework */; };
 		476DBFB99A808D25C329486B /* Pods_Tell_MeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D416D6A70E83FE4ED8B9DA9 /* Pods_Tell_MeTests.framework */; };
 		6DC45AFBA705A445CD55D041 /* Pods_Tell_Me.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178A70B4D88E22606A816DD3 /* Pods_Tell_Me.framework */; };
+		9BFDCDC71D48812D00056ABF /* MessagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFDCDC61D48812D00056ABF /* MessagesListViewController.swift */; };
+		9BFDCDC91D4884C100056ABF /* MessagesTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFDCDC81D4884C100056ABF /* MessagesTableCell.swift */; };
 		A523BA2B1D04074F00A4D69B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BA2A1D04074F00A4D69B /* AppDelegate.swift */; };
 		A523BA2D1D04074F00A4D69B /* RecordVewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BA2C1D04074F00A4D69B /* RecordVewController.swift */; };
 		A523BA301D04074F00A4D69B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A523BA2E1D04074F00A4D69B /* Main.storyboard */; };
@@ -59,6 +61,8 @@
 		3FC8EDB428DAEF6068C4CC4C /* Pods-Tell MeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tell MeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tell MeTests/Pods-Tell MeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6D416D6A70E83FE4ED8B9DA9 /* Pods_Tell_MeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tell_MeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85BC5D0859A4CE60563889DD /* Pods-Tell MeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tell MeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tell MeUITests/Pods-Tell MeUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9BFDCDC61D48812D00056ABF /* MessagesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesListViewController.swift; sourceTree = "<group>"; };
+		9BFDCDC81D4884C100056ABF /* MessagesTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableCell.swift; sourceTree = "<group>"; };
 		A523BA271D04074F00A4D69B /* Tell Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tell Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A523BA2A1D04074F00A4D69B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A523BA2C1D04074F00A4D69B /* RecordVewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVewController.swift; sourceTree = "<group>"; };
@@ -148,6 +152,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9BFDCDC41D4880B100056ABF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A55DDE4A1D3A0156001F349D /* ChartTableCell.swift */,
+				A560B2061D40A4280027EB8E /* DescriptionTableCell.swift */,
+				9BFDCDC81D4884C100056ABF /* MessagesTableCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		9BFDCDC51D4880CE00056ABF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A523BA2C1D04074F00A4D69B /* RecordVewController.swift */,
+				A523BA5B1D04D47E00A4D69B /* AnalyzedViewController.swift */,
+				A560B2041D40A01E0027EB8E /* DescriptionViewController.swift */,
+				9BFDCDC61D48812D00056ABF /* MessagesListViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		A523BA1E1D04074F00A4D69B = {
 			isa = PBXGroup;
 			children = (
@@ -173,16 +198,13 @@
 		A523BA291D04074F00A4D69B /* Tell Me */ = {
 			isa = PBXGroup;
 			children = (
-				A55231441D2A0CCF005ED8F4 /* Modal */,
 				A523BA2A1D04074F00A4D69B /* AppDelegate.swift */,
-				A523BA2C1D04074F00A4D69B /* RecordVewController.swift */,
-				A523BA5B1D04D47E00A4D69B /* AnalyzedViewController.swift */,
-				A560B2041D40A01E0027EB8E /* DescriptionViewController.swift */,
+				A55231441D2A0CCF005ED8F4 /* Modal */,
+				9BFDCDC51D4880CE00056ABF /* Controller */,
 				A523BA2E1D04074F00A4D69B /* Main.storyboard */,
-				A523BA991D04DC4200A4D69B /* AppConstants.swift */,
-				A55DDE4A1D3A0156001F349D /* ChartTableCell.swift */,
-				A560B2061D40A4280027EB8E /* DescriptionTableCell.swift */,
+				9BFDCDC41D4880B100056ABF /* View */,
 				A560B2081D40AC560027EB8E /* DescriptionText.swift */,
+				A523BA991D04DC4200A4D69B /* AppConstants.swift */,
 				A55231431D1D069B005ED8F4 /* Supporting Files */,
 			);
 			path = "Tell Me";
@@ -514,9 +536,11 @@
 				A55231521D2B8F37005ED8F4 /* ParsersClient.swift in Sources */,
 				A55231501D2A172E005ED8F4 /* SocialTone.swift in Sources */,
 				A523BA5C1D04D47F00A4D69B /* AnalyzedViewController.swift in Sources */,
+				9BFDCDC71D48812D00056ABF /* MessagesListViewController.swift in Sources */,
 				A523BAA11D0CD82900A4D69B /* ConstantsClient.swift in Sources */,
 				A55DDE4B1D3A0156001F349D /* ChartTableCell.swift in Sources */,
 				A523BA2B1D04074F00A4D69B /* AppDelegate.swift in Sources */,
+				9BFDCDC91D4884C100056ABF /* MessagesTableCell.swift in Sources */,
 				A55231481D2A0F5F005ED8F4 /* TextObject.swift in Sources */,
 				A523BA9A1D04DC4200A4D69B /* AppConstants.swift in Sources */,
 				A560B2051D40A01E0027EB8E /* DescriptionViewController.swift in Sources */,
