@@ -20,6 +20,7 @@ struct AppConstants {
     static let stop = "Stop"
     static let transcript = "Get audio transcript"
     static let savedMessages = "Saved Messages"
+    static let emptyTableView = "No records yet. \nGo back to record your first message"
     
     //MARK: Application buttons
     static let navigationBackButton = "Back"

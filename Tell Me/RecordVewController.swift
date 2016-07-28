@@ -38,14 +38,14 @@ class RecordVewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     func setUpStop() {
-        stopButton.imageView?.image = UIImage(named: "stop")
+        stopButton.setImage(UIImage(named: "stop"), forState: UIControlState.Normal)
         stopButton.hidden = false
         bottomLabel.text = AppConstants.stop
         bottomLabel.hidden = false
     }
     
     func setUpGetTranscript() {
-        stopButton.imageView?.image = UIImage(named: "transcript")
+        stopButton.setImage(UIImage(named: "transcript"), forState: UIControlState.Normal)
         stopButton.hidden = false
         bottomLabel.text = AppConstants.transcript
         bottomLabel.hidden = false
@@ -131,7 +131,7 @@ class RecordVewController: UIViewController, AVAudioRecorderDelegate {
                 let transcript = data![Client.IBMResponseKeys.transcript] as! String
                 let confidence = data![Client.IBMResponseKeys.confidence] as! Double
                 let textObject = TextObject(text: transcript, confidence: confidence, context: self.sharedContext)
-                //CoreDataStackManager.sharedInstance().saveContext()
+                CoreDataStackManager.sharedInstance().saveContext()
                 self.performSegueWithIdentifier("toAnalyzedVCSegue", sender: textObject)
             })
         }

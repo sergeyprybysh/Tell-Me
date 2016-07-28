@@ -13,7 +13,7 @@ class TextObject: NSManagedObject {
     
     @NSManaged var text: String
     @NSManaged var confidence: Double
-    @NSManaged var name: String?
+    @NSManaged var name: String
     
     @NSManaged var emotionsTone: EmotionsTone?
     @NSManaged var languageTone: LanguageTone?
@@ -30,5 +30,6 @@ class TextObject: NSManagedObject {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
         self.text = text
         self.confidence = confidence
+        self.name = "name"
     }
 }

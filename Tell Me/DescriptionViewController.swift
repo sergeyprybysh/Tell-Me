@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Charts
 
 class DescriptionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var chartView: BarChartView!
     var index: Int!
+    var barData: BarChartData?
     
     var tone: [String]?
     var toneDescription: [String]?
@@ -21,8 +24,29 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
+        if let data = barData {
+            setUpCharts(data)
+        }
         setDataAtIndex(index)
         tableView.reloadData()
+    }
+    
+    private func setUpCharts(data: BarChartData) {
+        chartView.data = data
+        chartView.descriptionText = ""
+        chartView.rightAxis.drawLabelsEnabled = false
+        chartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
+        let highValue = ChartLimitLine(limit: 0.75, label: "High Value")
+        highValue.lineColor = NSUIColor.orangeColor()
+        highValue.lineWidth = 1
+        highValue.valueTextColor = NSUIColor.orangeColor()
+        highValue.valueFont = UIFont.systemFontOfSize(10)
+        let lowValue = ChartLimitLine(limit: 0.25, label: "Low Value")
+        lowValue.lineWidth = 1
+        lowValue.valueTextColor = NSUIColor.redColor()
+        lowValue.valueFont = UIFont.systemFontOfSize(10)
+        chartView.rightAxis.addLimitLine(highValue)
+        chartView.rightAxis.addLimitLine(lowValue)
     }
     
     private func setDataAtIndex(index: Int) {
