@@ -18,13 +18,11 @@ class MessagesListViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("View did load appear Table View")
         navigationItem.title = AppConstants.savedMessages
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        print("View will appear Table View")
         if let messages = fetchMessages() {
             if messages.isEmpty {
                 emptyStateSetUp()
@@ -34,9 +32,6 @@ class MessagesListViewController: UIViewController, UITableViewDelegate, UITable
                 messageArray = messages
                 tableView.reloadData()
             }
-        }
-        else {
-            print("It's broken")
         }
     }
     
@@ -54,7 +49,6 @@ class MessagesListViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func fetchMessages() -> [TextObject]? {
-        print("Fetching messages")
         let fetchRequest = NSFetchRequest(entityName: "TextObject")
         do {
             return try sharedContext.executeFetchRequest(fetchRequest) as? [TextObject]
@@ -77,12 +71,25 @@ class MessagesListViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("Tap Tap")
+        let textObject = messageArray[indexPath.row]
+        performSegueWithIdentifier("toAnalysisVCFromTableView", sender: textObject)
     }
     
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 150
-//    }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 60
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "toAnalysisVCFromTableView" {
+            let analyzedVC = segue.destinationViewController as! AnalyzedViewController
+            let textObject = sender as! TextObject
+            analyzedVC.textObject = textObject
+            let backItem = UIBarButtonItem()
+            backItem.title = AppConstants.navigationBackTableViewButton
+            navigationItem.backBarButtonItem = backItem
+        }
+    }
 
 }
 

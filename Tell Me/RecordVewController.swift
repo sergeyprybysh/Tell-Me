@@ -130,7 +130,7 @@ class RecordVewController: UIViewController, AVAudioRecorderDelegate {
                 activityIndicator.stopAnimating()
                 let transcript = data![Client.IBMResponseKeys.transcript] as! String
                 let confidence = data![Client.IBMResponseKeys.confidence] as! Double
-                let textObject = TextObject(text: transcript, confidence: confidence, context: self.sharedContext)
+                let textObject = TextObject(text: transcript, confidence: confidence, name: self.getTimestampName(), context: self.sharedContext)
                 CoreDataStackManager.sharedInstance().saveContext()
                 self.performSegueWithIdentifier("toAnalyzedVCSegue", sender: textObject)
             })
@@ -164,6 +164,13 @@ class RecordVewController: UIViewController, AVAudioRecorderDelegate {
             print(message)
             presentAlertWithErrorMessage(message)
         }
+    }
+    
+    private func getTimestampName() -> String {
+        let date = NSDate();
+        let formatter = NSDateFormatter();
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss";
+        return formatter.stringFromDate(date);
     }
     
 }

@@ -20,18 +20,9 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var transcriptTextView: UITextView!
     var dialogTextField: UITextField!
 
-    
+    @IBOutlet weak var analysisButton: UIButton!
     var textObject: TextObject!
     
-    var text: String!
-    var score: Double!
-    
-//    var emotions: EmotionsTone?
-//    var language: LanguageTone?
-//    var social: SocialTone?
-    
-    var hasData = false
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
@@ -62,11 +53,15 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     private func analyzeTextWithIBM() {
-        print("New" + textObject.text)
-            Client.sharedInstance().analyzeText(textObject.text) { (emotionTone, languageTone, socialTone, error) -> Void in
+        let activityIndicator = UIActivityIndicatorView.init(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        activityIndicator.center = view.center
+        activityIndicator.startAnimating()
+        view.addSubview(activityIndicator)
+        Client.sharedInstance().analyzeText(textObject.text) { (emotionTone, languageTone, socialTone, error) -> Void in
                 
                 guard error == nil else {
                     dispatch_async(dispatch_get_main_queue(), {
+                        activityIndicator.stopAnimating()
                         self.presentAlertWithErrorMessage(error!.localizedDescription)})
                     return
                 }
@@ -76,21 +71,18 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
                         let emTone = EmotionsTone(emotions: emotionT, context: self.sharedContext)
                         emTone.textObject = self.textObject
                         CoreDataStackManager.sharedInstance().saveContext()
-                        //self.textObject.emotionsTone = emTone
-                        
                     }
                     if let languageT = languageTone {
                         let langTone = LanguageTone(language: languageT, context: self.sharedContext)
                         langTone.textObject = self.textObject
                         CoreDataStackManager.sharedInstance().saveContext()
-                        //self.textObject.languageTone = langTone
                     }
                     if let socialT = socialTone {
                         let sTone = SocialTone(social: socialT, context: self.sharedContext)
                         sTone.textObject = self.textObject
                         CoreDataStackManager.sharedInstance().saveContext()
-                        //self.textObject.socialTone = sTone
                     }
+                    activityIndicator.stopAnimating()
                     self.tableViews.reloadData()
                 })
             }
@@ -186,21 +178,27 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
             if index == 0 {
                 if let emotionsItem = textObject.emotionsTone {
                     descriptionVC.barData = getEmotionsBarChartData(emotionsItem)
+                    descriptionVC.levelHigh = 0.75
+                    descriptionVC.levelLow = 0.5
                 }
             }
             else if index == 1 {
                 if let languageItem = textObject.languageTone {
                     descriptionVC.barData = getLanguageBarChartData(languageItem)
+                    descriptionVC.levelHigh = 0.75
+                    descriptionVC.levelLow = 0.25
                 }
             }
             else if index == 2 {
                 if let socialItem = textObject.socialTone {
                     descriptionVC.barData = getSocialBarChartData(socialItem)
+                    descriptionVC.levelHigh = 0.75
+                    descriptionVC.levelLow = 0.25
                 }
             }
                 
             let backItem = UIBarButtonItem()
-            backItem.title = AppConstants.navigationBackButton
+            backItem.title = AppConstants.navigationBack
             navigationItem.backBarButtonItem = backItem
         }
     }
@@ -260,68 +258,7 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
         return chart
     }
     
-    
-//    func fetchResults() {
-//        if let emotionsResults = fetchEmotionsTone() {
-//            if !emotionsResults.isEmpty {
-//                emotions = emotionsResults[0]
-//                hasData = true
-//            }
-//        }
-//        
-//        if let languageResults = fetchLanguageTone() {
-//            if !languageResults.isEmpty {
-//                language = languageResults[0]
-//                hasData = true
-//            }
-//        }
-//        
-//        if let socialResults = fetchSocialTone() {
-//            if !socialResults.isEmpty {
-//                social = socialResults[0]
-//                hasData = true
-//            }
-//        }
-//    }
-    
-//    func fetchEmotionsTone() -> [EmotionsTone]? {
-//        
-//        let fetchRequest = NSFetchRequest(entityName: "EmotionsTone")
-//        fetchRequest.predicate = NSPredicate(format: "textObject == %@", self.textObject)
-//        do {
-//            return try sharedContext.executeFetchRequest(fetchRequest) as? [EmotionsTone]
-//        }
-//        catch _ {
-//            return nil
-//        }
-//    }
-//    
-//    func fetchLanguageTone() -> [LanguageTone]? {
-//        
-//        let fetchRequest = NSFetchRequest(entityName: "LanguageTone")
-//        fetchRequest.sortDescriptors = []
-//        fetchRequest.predicate = NSPredicate(format: "textObject == %@", self.textObject)
-//        do {
-//            return try sharedContext.executeFetchRequest(fetchRequest) as? [LanguageTone]
-//        }
-//        catch _ {
-//            return nil
-//        }
-//    }
-//    
-//    func fetchSocialTone() -> [SocialTone]? {
-//        
-//        let fetchRequest = NSFetchRequest(entityName: "SocialTone")
-//        fetchRequest.sortDescriptors = []
-//        fetchRequest.predicate = NSPredicate(format: "textObject == %@", self.textObject)
-//        do {
-//            return try sharedContext.executeFetchRequest(fetchRequest) as? [SocialTone]
-//        }
-//        catch _ {
-//            return nil
-//        }
-//    }
-    
+
     func configurationTextField(textField: UITextField!) {
         textField.placeholder = "Enter a name"
         dialogTextField = textField

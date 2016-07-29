@@ -40,13 +40,17 @@ extension Client {
                 return
             }
             
-            //TODO: remove it.
             print(parsedResult)
             guard let results = parsedResult[IBMResponseKeys.results] as? [[String: AnyObject]] else {
                 handler(data: nil, error: NSError(domain: "Parsing", code: 3, userInfo: [NSLocalizedDescriptionKey: "Unable to parse JSON with key: " + IBMResponseKeys.results]))
                 return
             }
-            //TODO: fix no resuls.
+            
+            guard !results.isEmpty else {
+                handler(data: nil, error: NSError(domain: "Parsing", code: 3, userInfo: [NSLocalizedDescriptionKey: "Unable to recognize the message. Please try again."]))
+                return
+            }
+            
             guard let alternatives = results[0][IBMResponseKeys.alternatives] as? [[String: AnyObject]] else {
                 handler(data: nil, error: NSError(domain: "Parsing", code: 3, userInfo: [NSLocalizedDescriptionKey: "Unable to parse JSON with key: " + IBMResponseKeys.alternatives]))
                 return

@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Automatic">
-    <entity name="EmotionsTone" representedClassName=".EmotionsTone" parentEntity="TextObject" syncable="YES">
+    <entity name="EmotionsTone" representedClassName=".EmotionsTone" syncable="YES">
         <attribute name="anger" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="disgust" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="fear" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="joy" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="sadness" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="textObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TextObject" inverseName="emotionsTone" inverseEntity="TextObject" syncable="YES"/>
+        <relationship name="textObject" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TextObject" inverseName="emotionsTone" inverseEntity="TextObject" syncable="YES"/>
     </entity>
-    <entity name="LanguageTone" representedClassName=".LanguageTone" parentEntity="TextObject" syncable="YES">
+    <entity name="LanguageTone" representedClassName=".LanguageTone" syncable="YES">
         <attribute name="analytical" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="confident" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="tentative" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="textObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TextObject" inverseName="languageTone" inverseEntity="TextObject" syncable="YES"/>
+        <relationship name="textObject" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TextObject" inverseName="languageTone" inverseEntity="TextObject" syncable="YES"/>
     </entity>
-    <entity name="SocialTone" representedClassName=".SocialTone" parentEntity="TextObject" syncable="YES">
+    <entity name="SocialTone" representedClassName=".SocialTone" syncable="YES">
         <attribute name="agreeableness" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="conscientiousness" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="emotionalRange" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="extraversion" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="openness" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="textObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TextObject" inverseName="socialTone" inverseEntity="TextObject" syncable="YES"/>
+        <relationship name="textObject" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TextObject" inverseName="socialTone" inverseEntity="TextObject" syncable="YES"/>
     </entity>
     <entity name="TextObject" representedClassName=".TextObject" syncable="YES">
         <attribute name="confidence" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="emotionsTone" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmotionsTone" inverseName="textObject" inverseEntity="EmotionsTone" syncable="YES"/>
-        <relationship name="languageTone" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LanguageTone" inverseName="textObject" inverseEntity="LanguageTone" syncable="YES"/>
-        <relationship name="socialTone" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SocialTone" inverseName="textObject" inverseEntity="SocialTone" syncable="YES"/>
+        <relationship name="emotionsTone" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="EmotionsTone" inverseName="textObject" inverseEntity="EmotionsTone" syncable="YES"/>
+        <relationship name="languageTone" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="LanguageTone" inverseName="textObject" inverseEntity="LanguageTone" syncable="YES"/>
+        <relationship name="socialTone" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SocialTone" inverseName="textObject" inverseEntity="SocialTone" syncable="YES"/>
     </entity>
     <elements>
-        <element name="EmotionsTone" positionX="-54" positionY="9" width="128" height="135"/>
-        <element name="LanguageTone" positionX="-36" positionY="54" width="128" height="105"/>
-        <element name="SocialTone" positionX="-18" positionY="72" width="128" height="135"/>
-        <element name="TextObject" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="LanguageTone" positionX="-92" positionY="117" width="128" height="103"/>
+        <element name="SocialTone" positionX="-425" positionY="81" width="128" height="133"/>
+        <element name="TextObject" positionX="-324" positionY="-243" width="128" height="133"/>
+        <element name="EmotionsTone" positionX="-47" positionY="-297" width="128" height="133"/>
     </elements>
 </model>

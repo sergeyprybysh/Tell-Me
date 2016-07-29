@@ -11,7 +11,5 @@ import UIKit
 
 class DescriptionTableCell: UITableViewCell{
     
-    @IBOutlet weak var firstLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var secondLabel: UILabel!
 }

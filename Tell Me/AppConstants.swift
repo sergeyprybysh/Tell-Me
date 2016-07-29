@@ -23,5 +23,7 @@ struct AppConstants {
     static let emptyTableView = "No records yet. \nGo back to record your first message"
     
     //MARK: Application buttons
-    static let navigationBackButton = "Back"
+    static let navigationBackButton = "Record Message"
+    static let navigationBackTableViewButton = "Saved Messages"
+    static let navigationBack = "Back"
 }

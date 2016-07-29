@@ -24,12 +24,12 @@ class TextObject: NSManagedObject {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
     
-    init(text: String, confidence: Double, context: NSManagedObjectContext) {
+    init(text: String, confidence: Double, name: String, context: NSManagedObjectContext) {
         
         let entity =  NSEntityDescription.entityForName("TextObject", inManagedObjectContext: context)!
         super.init(entity: entity, insertIntoManagedObjectContext: context)
         self.text = text
         self.confidence = confidence
-        self.name = "name"
+        self.name = name
     }
 }

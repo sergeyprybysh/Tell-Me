@@ -22,22 +22,18 @@ struct EmotionsDescription {
     
     static let tone = ["Anger", "Disgust", "Fear", "Joy", "Sadness"]
     
-    static let level = ["0.5 / 0.75", "0.5 / 0.75", "0.5 / 0.75", "0.5 / 0.75", "0.5 / 0.75"]
-    
     static let description = [anger, disgust, fear, joy, sadness]
 }
 
 struct LanguageDescription {
     
-    private static let analytic = "A person's reasoning and analytical attitude about things."
+    private static let analytic = "A person's reasoning and analytical attitude about things. Less than 0.25 - the text contains little or no evidence of analytical tone.More than 0.75 - more likely to be perceived as intellectual, rational, systematic, emotionless, or impersonal."
     
-    private static let confidence = "A persons degree of certainty."
+    private static let confidence = "A persons degree of certainty. Less than 0.25 - the text contains little or no evidence of confidence in tone. More than 0.75 - more likely to be perceived as assured, collected, hopeful, or egotistical."
     
-    private static let tentative = "A persons degree of inhibition."
+    private static let tentative = "A persons degree of inhibition. Less than 0.25 - the text contains little or no evidence of tentativeness in tone. More than 0.75 - more likely to be perceived as questionable, doubtful, limited, or debatable."
     
     static let tone = ["Analytic", "Confidence", "Tentative"]
-    
-    static let level = ["0.25 / 0.75", "0.25 / 0.75", "0.25 / 0.75"]
     
     static let description = [analytic, confidence, tentative]
 }
@@ -55,8 +51,6 @@ struct SocialDescription {
     private static let emotionalRange = "The extent a personâ's emotion is sensitive to the environment."
     
     static let tone = ["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Emotional Range"]
-    
-    static let level = ["0.25 / 0.75", "0.25 / 0.75", "0.25 / 0.75", "0.25 / 0.75", "0.25 / 0.75"]
     
     static let description = [openness, conscientiousness, extraversion, agreeableness, emotionalRange ]
 }

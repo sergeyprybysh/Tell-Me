@@ -16,32 +16,33 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var chartView: BarChartView!
     var index: Int!
     var barData: BarChartData?
+    var levelHigh: Double?
+    var levelLow: Double?
     
     var tone: [String]?
     var toneDescription: [String]?
-    var level: [String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         if let data = barData {
-            setUpCharts(data)
+            setUpCharts(data,levelHigh: levelHigh!, levelLow: levelLow!)
         }
         setDataAtIndex(index)
         tableView.reloadData()
     }
     
-    private func setUpCharts(data: BarChartData) {
+    private func setUpCharts(data: BarChartData, levelHigh: Double, levelLow: Double) {
         chartView.data = data
         chartView.descriptionText = ""
         chartView.rightAxis.drawLabelsEnabled = false
         chartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
-        let highValue = ChartLimitLine(limit: 0.75, label: "High Value")
+        let highValue = ChartLimitLine(limit: levelHigh, label: "High Value")
         highValue.lineColor = NSUIColor.orangeColor()
         highValue.lineWidth = 1
         highValue.valueTextColor = NSUIColor.orangeColor()
         highValue.valueFont = UIFont.systemFontOfSize(10)
-        let lowValue = ChartLimitLine(limit: 0.25, label: "Low Value")
+        let lowValue = ChartLimitLine(limit: levelLow, label: "Low Value")
         lowValue.lineWidth = 1
         lowValue.valueTextColor = NSUIColor.redColor()
         lowValue.valueFont = UIFont.systemFontOfSize(10)
@@ -53,38 +54,41 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
         if index == 0 {
             tone = EmotionsDescription.tone
             toneDescription = EmotionsDescription.description
-            level = EmotionsDescription.level
         }
         else if index == 1 {
             tone = LanguageDescription.tone
             toneDescription = LanguageDescription.description
-            level = LanguageDescription.level
         }
         else if index == 2 {
             tone = SocialDescription.tone
             toneDescription = SocialDescription.description
-            level = SocialDescription.level
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return tone!.count
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return tone![section]
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: DescriptionTableCell = tableView.dequeueReusableCellWithIdentifier("descriptionCell") as! DescriptionTableCell
-        configureCell(cell, index: indexPath.row)
+        configureCell(cell, index: indexPath.section)
         return cell
     }
     
     func configureCell(cell: DescriptionTableCell, index: Int) -> DescriptionTableCell {
-        cell.firstLabel.text = tone![index]
         cell.textView.text = toneDescription![index]
-        cell.secondLabel.text = level![index]
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 120
-    }
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return 120
+//    }
 }
