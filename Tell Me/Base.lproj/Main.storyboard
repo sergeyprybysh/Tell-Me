@@ -97,19 +97,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hH3-hf-82r" firstAttribute="top" secondItem="7yK-Xz-3bE" secondAttribute="bottom" id="1PU-Dp-Ykq"/>
+                            <constraint firstItem="7yK-Xz-3bE" firstAttribute="top" secondItem="CIJ-zz-CfX" secondAttribute="topMargin" constant="10" id="5OO-Uu-i3c"/>
                             <constraint firstItem="7yK-Xz-3bE" firstAttribute="leading" secondItem="CIJ-zz-CfX" secondAttribute="leadingMargin" constant="-20" id="7DW-Uy-93z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7yK-Xz-3bE" secondAttribute="trailing" constant="-20" id="FEk-6T-usz"/>
-                            <constraint firstItem="7yK-Xz-3bE" firstAttribute="top" secondItem="arB-4n-WXQ" secondAttribute="bottom" id="dDr-kn-wLu"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="7yK-Xz-3bE"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="1PU-Dp-Ykq"/>
+                                <exclude reference="5OO-Uu-i3c"/>
                                 <exclude reference="7DW-Uy-93z"/>
                                 <exclude reference="FEk-6T-usz"/>
-                                <exclude reference="dDr-kn-wLu"/>
+                                <exclude reference="1PU-Dp-Ykq"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -117,10 +117,10 @@
                                 <include reference="7yK-Xz-3bE"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="1PU-Dp-Ykq"/>
+                                <include reference="5OO-Uu-i3c"/>
                                 <include reference="7DW-Uy-93z"/>
                                 <include reference="FEk-6T-usz"/>
-                                <include reference="dDr-kn-wLu"/>
+                                <include reference="1PU-Dp-Ykq"/>
                             </mask>
                         </variation>
                     </view>
@@ -481,7 +481,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="jRg-kx-JJ6"/>
+                                    <constraint firstAttribute="height" constant="200" id="jRg-kx-JJ6"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -494,11 +494,11 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qoS-hA-hkF">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qoS-hA-hkF">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="descriptionCell" rowHeight="80" id="QWR-h6-4MZ" customClass="DescriptionTableCell" customModule="Tell_Me" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="descriptionCell" rowHeight="90" id="QWR-h6-4MZ" customClass="DescriptionTableCell" customModule="Tell_Me" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QWR-h6-4MZ" id="qSc-R3-G1i">
@@ -513,9 +513,9 @@
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Ltf-az-N8P" firstAttribute="top" secondItem="qSc-R3-G1i" secondAttribute="topMargin" constant="-8" id="AB0-Be-kne"/>
+                                                <constraint firstItem="Ltf-az-N8P" firstAttribute="top" secondItem="qSc-R3-G1i" secondAttribute="topMargin" constant="-4" id="AB0-Be-kne"/>
                                                 <constraint firstItem="Ltf-az-N8P" firstAttribute="leading" secondItem="qSc-R3-G1i" secondAttribute="leadingMargin" id="B0c-Vn-9gS"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Ltf-az-N8P" secondAttribute="bottom" constant="-8" id="KUF-SR-eUa"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Ltf-az-N8P" secondAttribute="bottom" constant="-4" id="KUF-SR-eUa"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Ltf-az-N8P" secondAttribute="trailing" id="WDC-Fy-8OB"/>
                                             </constraints>
                                             <variation key="default">
