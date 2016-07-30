@@ -90,7 +90,11 @@ class MessagesListViewController: UIViewController, UITableViewDelegate, UITable
         {
             sharedContext.deleteObject(messageArray[indexPath.row])
             messageArray.removeAtIndex(indexPath.row)
+            CoreDataStackManager.sharedInstance().saveContext()
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            if messageArray.isEmpty {
+                emptyStateSetUp()
+            }
             
         }
     }

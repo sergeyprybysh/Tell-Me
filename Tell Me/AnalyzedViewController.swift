@@ -32,6 +32,13 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
         tableViews.reloadData()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        if fetchTextObject()!.isEmpty {
+            navigationController?.popToRootViewControllerAnimated(true)
+        }
+    }
+    
     func setUpNavigationBar() {
         
         let saveImage = UIImage(named: "save")!
@@ -53,6 +60,7 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     private func analyzeTextWithIBM() {
+        
         let activityIndicator = UIActivityIndicatorView.init(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         activityIndicator.center = view.center
         activityIndicator.startAnimating()
@@ -201,6 +209,7 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
             backItem.title = AppConstants.navigationBack
             navigationItem.backBarButtonItem = backItem
         }
+        
     }
     
     private func configureCell(cell: ChartTableCell, indexPath: Int) -> ChartTableCell {
@@ -303,6 +312,17 @@ class AnalyzedViewController: UIViewController, UITableViewDelegate, UITableView
     
     func textViewDidEndEditing(textView: UITextView) {
         textObject.text = textView.text
+    }
+    
+    func fetchTextObject() -> [TextObject]? {
+        let fetchRequest = NSFetchRequest(entityName: "TextObject")
+        fetchRequest.predicate = NSPredicate(format: "name == %@", self.textObject.name)
+        do {
+            return try sharedContext.executeFetchRequest(fetchRequest) as? [TextObject]
+        }
+        catch _ {
+            return nil
+        }
     }
     
 }

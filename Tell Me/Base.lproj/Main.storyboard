@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9Fn-b4-4oC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9Fn-b4-4oC">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -24,7 +24,7 @@
             </objects>
             <point key="canvasLocation" x="907.5" y="75"/>
         </scene>
-        <!--Item 2-->
+        <!--Messages List View Controller-->
         <scene sceneID="Wgq-kt-qpj">
             <objects>
                 <viewController id="f28-qn-0BN" customClass="MessagesListViewController" customModule="Tell_Me" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,6 +52,9 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="18" y="0.0" width="181" height="44.5"/>
+                                                    </variation>
                                                 </label>
                                             </subviews>
                                             <constraints>
@@ -106,10 +109,10 @@
                                 <exclude reference="7yK-Xz-3bE"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="1PU-Dp-Ykq"/>
                                 <exclude reference="5OO-Uu-i3c"/>
                                 <exclude reference="7DW-Uy-93z"/>
                                 <exclude reference="FEk-6T-usz"/>
-                                <exclude reference="1PU-Dp-Ykq"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -117,14 +120,14 @@
                                 <include reference="7yK-Xz-3bE"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="1PU-Dp-Ykq"/>
                                 <include reference="5OO-Uu-i3c"/>
                                 <include reference="7DW-Uy-93z"/>
                                 <include reference="FEk-6T-usz"/>
-                                <include reference="1PU-Dp-Ykq"/>
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="acM-eA-2Xf"/>
+                    <tabBarItem key="tabBarItem" title="" image="list_view" id="acM-eA-2Xf"/>
                     <navigationItem key="navigationItem" id="dVf-uf-VpO"/>
                     <connections>
                         <outlet property="tableView" destination="7yK-Xz-3bE" id="f04-VN-aCV"/>
@@ -135,11 +138,11 @@
             </objects>
             <point key="canvasLocation" x="1786.5" y="75"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="dkE-HS-Xkc">
             <objects>
                 <navigationController id="b8a-lN-7Ge" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="RV0-Kb-R3Y"/>
+                    <tabBarItem key="tabBarItem" title="" image="record_view" id="RV0-Kb-R3Y"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tex-LK-Esl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -502,7 +505,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QWR-h6-4MZ" id="qSc-R3-G1i">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="91.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ltf-az-N8P">
@@ -568,13 +571,13 @@
                                 <exclude reference="qoS-hA-hkF"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="6o2-La-sFB"/>
                                 <exclude reference="Mep-ao-95V"/>
                                 <exclude reference="eM5-mW-tgh"/>
                                 <exclude reference="ptn-2C-xTs"/>
                                 <exclude reference="YT8-0v-cx0"/>
                                 <exclude reference="scP-WO-gwF"/>
                                 <exclude reference="y3B-yr-zc6"/>
-                                <exclude reference="6o2-La-sFB"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -583,13 +586,13 @@
                                 <include reference="qoS-hA-hkF"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="6o2-La-sFB"/>
                                 <include reference="Mep-ao-95V"/>
                                 <include reference="eM5-mW-tgh"/>
                                 <include reference="ptn-2C-xTs"/>
                                 <include reference="YT8-0v-cx0"/>
                                 <include reference="scP-WO-gwF"/>
                                 <include reference="y3B-yr-zc6"/>
-                                <include reference="6o2-La-sFB"/>
                             </mask>
                         </variation>
                     </view>
@@ -622,10 +625,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="list_view" width="25" height="25"/>
         <image name="record" width="50" height="50"/>
+        <image name="record_view" width="25" height="25"/>
         <image name="stop" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WOb-6C-7Ho"/>
+        <segue reference="ZHP-j8-TdO"/>
     </inferredMetricsTieBreakers>
 </document>
