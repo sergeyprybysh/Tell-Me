@@ -1,7 +1,5 @@
 # Tell-Me
 
-_You Decide! Udacity iOS Developer Nanodegree_
-
 ## Install and Run
 * **Download** ZIP file or **Clone** https://github.com/sergeyprybysh/Tell-Me.git
 * Use **XCode 7.3, Swift 2.2** to properly compile **Charts** podfile
